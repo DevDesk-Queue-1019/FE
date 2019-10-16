@@ -8,6 +8,7 @@ function App() {
       <header className="App-header">
         <h1>DevDesk Queue</h1>
       </header>
+      <h1>Dev Desk Queue</h1>
     </div>
   );
 }
