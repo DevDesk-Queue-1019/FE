@@ -1,16 +1,13 @@
 import React from 'react';
-import SignUpPage from './Components/SignUpPage';
-import SignInPage from './Components/SignInPage';
-
+import Links from "./components/Links";
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <SignUpPage />
-        <SignInPage />
       </header>
+      <Links />
     </div>
   );
 }
