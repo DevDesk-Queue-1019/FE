@@ -62,7 +62,7 @@ validationSchema: Yup.object().shape({
   email: Yup.string().required()
 }),
 handleSubmit(values, { setStatus, resetForm }) {
-  axios.post("#", values)
+  axios.post("https://reqres.in/api/users", values)
     .then(result => {
       console.log(result);
       setStatus(result.data);
