@@ -1,4 +1,6 @@
 import React from 'react';
+import SignUpPage from './Components/SignUpPage';
+import SignInPage from './Components/SignInPage';
 
 import './App.css';
 
@@ -6,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>DevDesk Queue</h1>
+        <SignUpPage />
+        <SignInPage />
       </header>
-      <h1>Dev Desk Queue</h1>
     </div>
   );
 }
