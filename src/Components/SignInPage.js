@@ -4,11 +4,19 @@ import styled from 'styled-components';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-const Button = styled.button`
-  background: red;
-  border-style: solid;
-  border-color: black;
-  color: white;
+export const Button = styled.button`
+  width: 300px;
+  height: 35px;
+  background-color: #BB1333;
+  color: #fff;
+  border-radius: 3px;
+`;
+
+export const Title = styled.h1`
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: #4d4d4d;
+  font-size: 2.2em;
 `;
 
 const Login = ({ errors, touched, status }) => {
@@ -23,7 +31,7 @@ const Login = ({ errors, touched, status }) => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <Title>Login</Title>
       <Form>
         <label>Username</label>
         <Field text="type" name="username" placeholder="Username" />
@@ -54,7 +62,7 @@ const formikSignIn = withFormik({
     password: Yup.string().required()
   }),
   handleSubmit(values) {
-    axios.post("#", values)
+    axios.post("https://devdesk-backend.herokuapp.com/api/auth/login", values)
       .then(result => {
         console.log(result);
       })
