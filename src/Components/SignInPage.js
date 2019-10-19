@@ -20,14 +20,13 @@ export const Title = styled.h1`
 `;
 
 const Login = ({ errors, touched, status }) => {
-
   const [user, setUser] = useState([]);
 
   useEffect(() => {
     if (status) {
       setUser([...user, status]);
     }
-  }, [status]);
+  }, [status, user]);
 
   return (
     <div>
@@ -61,10 +60,15 @@ const formikSignIn = withFormik({
     username: Yup.string().required(),
     password: Yup.string().required()
   }),
-  handleSubmit(values) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
+    console.log(props);
     axios.post("https://devdesk-backend.herokuapp.com/api/auth/login", values)
       .then(result => {
         console.log(result);
+        setStatus(result.data);
+        localStorage.setItem('token', result.data);
+        resetForm();
+        props.history.push('/createticket');
       })
       .catch(error => console.error(error));
   }

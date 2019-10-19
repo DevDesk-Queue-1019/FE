@@ -31,7 +31,7 @@ useEffect(() => {
   if (status) {
     setUser([...user, status]);
   }
-}, [status]);
+}, [status, user]);
 
 return (
   <div className="form-container">
