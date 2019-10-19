@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: '1.1rem',
     boxSizing: 'border-box',
     padding: '0 7px 0 7px',
+    '&:hover': {
+      color: '#BA112E'
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -41,6 +44,13 @@ const useStyles = makeStyles(theme => ({
     height: '20%',
     margin: '1% 1% 0 0',
   },
+  menuLinks: {
+    textDecoration: 'none',
+    color: '#000',
+      '&:hover': {
+        color: '#BA112E'
+      }
+  }
 }));
 
 // App
@@ -85,10 +95,10 @@ export default function App() {
               horizontal: 'right',
             }}
           >
-            <MenuItem onClick={handleClose}>Student DevDesk</MenuItem>
-            <MenuItem onClick={handleClose}>Helper DevDesk</MenuItem>
+            <MenuItem onClick={handleClose} className={classes.menuLinks}>Student DevDesk</MenuItem>
+            <MenuItem onClick={handleClose} className={classes.menuLinks}>Helper DevDesk</MenuItem>
             <MenuItem>
-              <Link to='/createticket'>Create New Ticket</Link></MenuItem>
+              <Link to='/createticket' className={classes.menuLinks} >Create New Ticket</Link></MenuItem>
           </Menu>           
           </div>
         </Toolbar>
@@ -96,7 +106,7 @@ export default function App() {
     <Switch>
       <Route exact path='/signup' component={SignUpPage} />
       <Route path='/login' component={SignInPage}/>
-      <PrivateRoute path='/createticket' className={classes.navLinks} component={CreateTicket} />
+      <PrivateRoute path='/createticket' component={CreateTicket} />
     </Switch>
     </Router>
   );
