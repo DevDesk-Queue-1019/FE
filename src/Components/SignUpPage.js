@@ -42,7 +42,7 @@ return (
       {touched.username && errors.username && <p>{errors.username}</p>}
 
       <label>Password</label>
-      <Field text="type" name="password" placeholder="Password" />
+      <Field type="password" name="password" placeholder="Password" />
       {touched.password && errors.password && <p>{errors.password}</p>}
 
       <label>User Type</label>
