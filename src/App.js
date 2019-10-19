@@ -1,16 +1,16 @@
 import React from 'react';
-import SignUpPage from './Components/SignUpPage';
+import DevDeskHome from './Components/DevDeskHome';
 import SignInPage from './Components/SignInPage';
+import SignUpPage from './Components/SignUpPage';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+        {/* <DevDeskHome /> */}
         <SignUpPage />
         <SignInPage />
-      </header>
     </div>
   );
 }
