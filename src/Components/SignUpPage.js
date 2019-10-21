@@ -4,12 +4,23 @@ import styled from 'styled-components';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
-const Button = styled.button`
-background: red;
-border-style: solid;
-border-color: black;
-color: white;
+
+export const Button = styled.button`
+  width: 300px;
+  height: 35px;
+  background-color: #BB1333;
+  color: #fff;
+  border-radius: 3px;
 `;
+
+export const Title = styled.h1`
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: #4d4d4d;
+  font-size: 2.2em;
+`;
+
+
 
 
 const Signup = ({ errors, touched, status }) => {
@@ -20,23 +31,23 @@ useEffect(() => {
   if (status) {
     setUser([...user, status]);
   }
-}, [status]);
+}, [status, user]);
 
 return (
   <div className="form-container">
-    <h1>Sign Up</h1>
+    <Title>Sign Up</Title>
     <Form>
       <label>Username</label>
       <Field text="type" name="username" placeholder="Username" />
       {touched.username && errors.username && <p>{errors.username}</p>}
 
       <label>Password</label>
-      <Field text="type" name="password" placeholder="Password" />
+      <Field type="password" name="password" placeholder="Password" />
       {touched.password && errors.password && <p>{errors.password}</p>}
 
-      <label>Status</label>
+      <label>User Type</label>
       <Field text="type" name="authType" placeholder="authType" />
-      {touched.authType && errors.authType && <p>{errors.authType}</p>}
+      {touched.email && errors.email && <p>{errors.email}</p>}
 
       <Button type="submit" value="Login">Submit!</Button>
     </Form>
@@ -61,7 +72,6 @@ validationSchema: Yup.object().shape({
   authType: Yup.string().required()
 }),
 handleSubmit(values, { setStatus, resetForm }) {
-  console.log(values);
   axios.post("https://devdesk-backend.herokuapp.com/api/auth/register", values)
     .then(result => {
       console.log(result);
