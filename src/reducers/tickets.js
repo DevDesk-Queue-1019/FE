@@ -32,7 +32,9 @@ export const tickets = (state = initialState, action) => {
                 filteredTickets: [...newFilteredTickets]
             }
         case DELETE_TICKET:
-            let newTickets = state.tickets.filter( ticket => !(ticket.id === action.payload))
+            let newTickets = state.tickets.filter( ticket => ticket.id !== action.payload )
+            console.log(action.payload)
+            console.log(newTickets)
             return {
                 ...state,
                 tickets: [...newTickets]
