@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 
+
 const StyledLandingPage = styled.div`
   display: flex;
   flex-direction: column;
+  
   width: 100%;
 `;
 
@@ -16,7 +18,7 @@ const StyledMain = styled.main`
   align-items: center;
   min-height: 70vh;
   padding: 50px 20px;
-  backgound-image: fixed;
+  
   @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
     padding: 10px;
@@ -24,7 +26,7 @@ const StyledMain = styled.main`
 `;
 
 const StyledCaption = styled.div`
-  width: 80%;
+
   h2 {
     font-size: 60px;
     line-height: 50px;
@@ -71,9 +73,6 @@ const DevDeskHome = () => (
         </Link>
         <Link to="/login">
           <button>Login</button>
-        </Link>
-        <Link to="/signup">
-          <button>SignUp</button>
         </Link>
       </StyledCaption>
     </StyledMain>

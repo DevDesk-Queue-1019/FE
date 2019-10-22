@@ -68,49 +68,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StyledMain = styled.main`
-  display: flex;
-  justify-content: center;
- 
-  @media screen and (max-width: 700px) {
-    flex-direction: column-reverse;
-    padding: 10px;
-  }
-`;
-
-const StyledCaption = styled.div`
-  
-  h2 {
-    font-size: 40px;
-    line-height: 50px;
-  }
-  h6 {
-    font-size: 24px;
-    margin: 20px 0;
-  }
-  a button {
-    margin: 20px 25px 20px 0;
-    background: #13131f;
-    color: #fdfdfd;
-    font-size: 15px;
-    width: 120px;
-    height: 40px;
-    border: 1px solid black;
-    border-radius: 3px;
-  }
-  a button:hover {
-    cursor: pointer;
-  }
-  @media screen and (max-width: 700px) {
-    width: 90%;
-    text-align: center;
-    h2 {
-      font-size: 30px;
-      line-height: 40px;
-    }
-  }
-`;
-
 // App
 export default function App() {
   const classes = useStyles();
@@ -172,16 +129,6 @@ export default function App() {
           </Menu>           
           </div>
         </Toolbar>
-
-        <div>  
-          <StyledMain>
-            <StyledCaption>
-              <h2>DevDesk Queue:</h2>
-              <h6>The answers to your qeustions</h6>
-            </StyledCaption>
-          </StyledMain>
-        </div>  
-      
 
     </div>
     <Switch>
