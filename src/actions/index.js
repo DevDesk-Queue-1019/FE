@@ -12,7 +12,6 @@ export const getTickets = () => dispatch => {
   axiosWithAuth()
     .get("https://devdesk-backend.herokuapp.com/api/tickets/")
     .then(res => {
-      console.log(res.data);
       dispatch({ type: GET_TICKETS, payload: res.data });
     });
 };
@@ -25,7 +24,6 @@ export const filterTickets = category => ({
 export const deleteTicket = id => dispatch => {
   axiosWithAuth().delete(`https://devdesk-backend.herokuapp.com/api/tickets/${id}`)
   .then( res => {
-    console.log(res)
     dispatch({ type: DELETE_TICKET, payload: res })
   })
   .catch( err => {
