@@ -1,6 +1,27 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addTicket } from '../../actions';
+import '../../index.css';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  width: 300px;
+  height: 40px;
+  background-color: #BB1333;
+  color: #fff;
+  border-radius: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+`;
+
+export const Title = styled.h1`
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  color: #f0f4f7;
+  font-size: 2.2em;
+  text-align: center;
+`;
 
 const CreateTicket = props => {
   const id = parseInt(localStorage.getItem('owner'));
@@ -28,14 +49,16 @@ const CreateTicket = props => {
   }
 
   return (
-    <div className='ticket-form'>
-      <form onSubmit={handleSubmit}>
+    <div className='form-container'>
+      <Title>Create A New Ticket</Title>
+      <form onSubmit={handleSubmit} className='ticket-form'>
         <input
           type='text'
           name='title'
           placeholder='Ticket Title'
           value={ticket.title}
           onChange={handleChanges}
+          className='form-field'
         />
         <input
           type='date'
@@ -44,6 +67,7 @@ const CreateTicket = props => {
           max='2019-12-30'
           value={ticket.date}
           onChange={handleChanges}
+          className='form-field'
         />
         <input
           type='text'
@@ -51,6 +75,7 @@ const CreateTicket = props => {
           placeholder='Ticket Type'
           value={ticket.type}
           onChange={handleChanges}
+          className='form-field'
         />
         <input
           type='textarea'
@@ -58,6 +83,7 @@ const CreateTicket = props => {
           placeholder='Explain the issue here...'
           value={ticket.description}
           onChange={handleChanges}
+          className='form-field'
         />
         <input 
           type='textarea'
@@ -65,8 +91,9 @@ const CreateTicket = props => {
           placeholder='Explain what you&#39;ve tried...'
           value={ticket.tried}
           onChange={handleChanges}
+          className='form-field'
         />
-        <button type='submit'>Add Ticket</button>
+        <Button type='submit'>Add Ticket</Button>
       </form>
     </div>
   )

@@ -16,8 +16,7 @@ import StudentLandingPage from './Student/StudentLandingPage';
 import HelperLandingPage from './Helper/HelperLandingPage';
 import PrivateRoute from './PrivateRoute';
 import CreateTicket from './Student/CreateTicket';
-import StudentLandingPage from './Student/StudentLandingPage';
-import HelperLandingPage from './Helper/HelperLandingPage';
+
 
 import styled from 'styled-components';
 
@@ -72,10 +71,7 @@ const useStyles = makeStyles(theme => ({
 const StyledMain = styled.main`
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 10vh;
-  padding: 0px 20px;
-  backgound-image: fixed;
+ 
   @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
     padding: 10px;
@@ -83,7 +79,7 @@ const StyledMain = styled.main`
 `;
 
 const StyledCaption = styled.div`
-  width: 45%;
+  
   h2 {
     font-size: 40px;
     line-height: 50px;
@@ -181,7 +177,7 @@ export default function App() {
           <StyledMain>
             <StyledCaption>
               <h2>DevDesk Queue:</h2>
-              <h6>We Answer All The Questions?</h6>
+              <h6>The answers to your qeustions</h6>
             </StyledCaption>
           </StyledMain>
         </div>  
@@ -189,17 +185,9 @@ export default function App() {
 
     </div>
     <Switch>
-<<<<<<< HEAD
-      {/* <Route exact path='/' component={Home} /> */}
-      <Route exact path='/signup' component={SignUpPage} />
-      <Route exact path='/login' component={SignInPage}/>
-      <Route exact path='/student' component={StudentLandingPage} />
-      <Route exact path='/helper' component={HelperLandingPage} />
-=======
       <Route exact path='/' component={DevDeskHome} />
       <Route path='/signup' component={SignUpPage} />
       <Route path='/login' component={SignInPage}/>
->>>>>>> 7893d75af5c68443634b35fac568430f25bd54c6
       <PrivateRoute path='/createticket' component={CreateTicket} />
       <PrivateRoute path='/student' component={StudentLandingPage} />
       <PrivateRoute path='/helper' component={HelperLandingPage} />

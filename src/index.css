@@ -24,8 +24,18 @@ code {
   margin-top: 20px;
 }
 
+
+
 .form-form {
   display: grid;
+  width: 100%;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.ticket-form {
+  display: grid;
+  grid-row-gap: 1em;
   width: 100%;
   justify-content: center;
   font-size: 1.3rem;
@@ -38,12 +48,13 @@ code {
 .form-field {
   border-radius: 20px;
   height: 30px;
+  width: 
 }
 
-.helpdesk-img {
+/* .helpdesk-img {
   width: 100%;
   height: auto;
   background-repeat: no-repeat;
   background-position: right top;
   background-attachment: fixed;
-}
+} */

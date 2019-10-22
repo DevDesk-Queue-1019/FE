@@ -21,6 +21,7 @@ export const Title = styled.h1`
   font-weight: 600;
   color: #f0f4f7;
   font-size: 2.2em;
+  text-align: center;
 `;
 
 
@@ -50,7 +51,7 @@ return (
 
       <label className='form-label'>User Type</label>
       <Field text="type" name="authType" placeholder="authType" className='form-field' />
-      {touched.email && errors.email && <p>{errors.email}</p>}
+      {touched.authType && errors.authType && <p>{errors.authType}</p>}
 
       <Button type="submit" value="Login">Submit</Button>
     </Form>
@@ -70,9 +71,9 @@ mapPropsToValues({ username, password, authType, }) {
   };
 },
 validationSchema: Yup.object().shape({
-  username: Yup.string().required(),
-  password: Yup.string().required(),
-  authType: Yup.string().required()
+  username: Yup.string().required('***Please choose your Username***'),
+  password: Yup.string().required('***Please enter desired password***'),
+  authType: Yup.string().required('***Student, Helper, or Admin?***')
 }),
 handleSubmit(values, { setStatus, resetForm }) {
   axios.post("https://devdesk-backend.herokuapp.com/api/auth/register", values)
