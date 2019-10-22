@@ -1,16 +1,29 @@
-import { GET_TICKETS, FILTER_TICKETS, DELETE_TICKET } from "../actions";
+import { GET_TICKETS_START, GET_TICKETS_SUCCESS, GET_TICKETS_ERR, FILTER_TICKETS, DELETE_TICKET } from "../actions";
 
 const initialState = {
     tickets: [],
-    filteredTickets: []
+    filteredTickets: [],
+    loading: false
 }
 
 export const tickets = (state = initialState, action) => {
     switch(action.type){
-        case GET_TICKETS:
+        case GET_TICKETS_START:
             return {
                 ...state,
-                tickets: [...action.payload]
+                loading: true
+            }
+        case GET_TICKETS_SUCCESS:
+            return {
+                ...state,
+                tickets: [...action.payload],
+                loading: false
+            }
+        case GET_TICKETS_ERR:
+            return {
+                ...state,
+                loading: false,
+                err: action.payload
             }
         case FILTER_TICKETS:
             let newFilteredTickets = state.tickets.filter( ticket => ticket.type === action.payload )

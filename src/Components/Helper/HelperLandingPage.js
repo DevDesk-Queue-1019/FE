@@ -21,7 +21,7 @@ const HelperLandingPage = () => {
             {
                 tickets ? tickets.map( ticket => {
                     return <TicketCard key={ticket.id} id={ticket.id} title={ticket.title} description={ticket.description} tried={ticket.tried} type={ticket.type} />
-                }) : <h1>LoADING...</h1>
+                }) : <h1>Loading...</h1>
             }
         </div>
     )
