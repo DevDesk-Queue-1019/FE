@@ -13,7 +13,7 @@ import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
 import PrivateRoute from './PrivateRoute';
 import CreateTicket from './CreateTicket';
-import StudentLandingPage from './Student/StudentLandingPage';
+import HelperLandingPage from './Helper/HelperLandingPage';
 
 // Styling
 const useStyles = makeStyles(theme => ({
@@ -59,7 +59,7 @@ export default function App() {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
+  //const open = Boolean(anchorEl);
 
   const handleClick = e => {
     setAnchorEl(e.currentTarget);
@@ -97,7 +97,7 @@ export default function App() {
             }}
           >
             <MenuItem onClick={handleClose} className={classes.menuLinks}>Student DevDesk</MenuItem>
-            <MenuItem onClick={handleClose} className={classes.menuLinks}>Helper DevDesk</MenuItem>
+            <MenuItem onClick={handleClose} ><Link to="/helper" className={classes.menuLinks}>Helper DevDesk</Link></MenuItem>
             <MenuItem>
               <Link to='/createticket' className={classes.menuLinks} >Create New Ticket</Link></MenuItem>
           </Menu>           
@@ -108,6 +108,7 @@ export default function App() {
       <Route exact path='/signup' component={SignUpPage} />
       <Route path='/login' component={SignInPage}/>
       <PrivateRoute path='/createticket' component={CreateTicket} />
+      <PrivateRoute path="/helper" component={HelperLandingPage} />
     </Switch>
     </Router>
   );
