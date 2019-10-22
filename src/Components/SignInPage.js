@@ -23,7 +23,9 @@ const Login = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-    if (status) {
+
+    console.log(user);
+    if (status) {      
       setUser([...user, status]);
     }
   }, [status, user]);
@@ -67,8 +69,10 @@ const formikSignIn = withFormik({
         console.log(result);
         setStatus(result.data);
         localStorage.setItem('token', result.data.token);
-        resetForm();
-        props.history.push('/createticket');
+        localStorage.setItem('owner', result.data.id);
+        resetForm();    
+
+        props.history.push('/student');
       })
       .catch(error => console.error(error));
   }

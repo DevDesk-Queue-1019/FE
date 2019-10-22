@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { Route, Switch, Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -9,11 +9,13 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import lambdaLogo from '../images/lambda-logo.png';
+import DevDeskHome from './DevDeskHome';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
 import PrivateRoute from './PrivateRoute';
-import CreateTicket from './CreateTicket';
+import CreateTicket from './Student/CreateTicket';
 import StudentLandingPage from './Student/StudentLandingPage';
+import HelperLandingPage from './Helper/HelperLandingPage';
 
 // Styling
 const useStyles = makeStyles(theme => ({
@@ -51,6 +53,15 @@ const useStyles = makeStyles(theme => ({
       '&:hover': {
         color: '#BA112E'
       }
+  },
+  homepageLink: {
+    boxSizing: 'border-box',
+    paddingTop: '1.5%',
+    textDecoration: 'none',
+    color: '#FFF',
+      '&:hover': {
+        color: '#BA112E'
+      }
   }
 }));
 
@@ -70,12 +81,12 @@ export default function App() {
   };
 
   return (
-    <Router>
+    <div>
     <div className={classes.root}>
         <Toolbar position='static'>
           <Typography variant="h6" className={classes.title}>
             <img src={lambdaLogo} alt='Lambda School Logo' className={classes.logo} />
-            <p>Lambda DevDesk</p>
+            <Link to='/' className={classes.homepageLink}>Lambda DevDesk</Link>
           </Typography>
           <div>
           <Link to='/login' className={classes.navLinks}>Login</Link>
@@ -89,26 +100,41 @@ export default function App() {
             id='nav-menu'
             anchorEl={anchorEl}
             keepMounted
-            open={Boolean(anchorEl)}
+            style={{top: '50px'}}
+            open={open}
             onClose={handleClose}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'right',
-            }}
+            // anchorOrigin={{
+            //   vertical: 'bottom',
+            //   horizontal: 'right',
+            // }}
           >
-            <MenuItem onClick={handleClose} className={classes.menuLinks}>Student DevDesk</MenuItem>
-            <MenuItem onClick={handleClose} className={classes.menuLinks}>Helper DevDesk</MenuItem>
-            <MenuItem>
-              <Link to='/createticket' className={classes.menuLinks} >Create New Ticket</Link></MenuItem>
+            <MenuItem onClick={handleClose} >
+              <Link to='/student' className={classes.menuLinks}>
+                Student DevDesk
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose} >
+              <Link to='/helper' className={classes.menuLinks}>
+                Helper DevDesk
+              </Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link to='/createticket' className={classes.menuLinks} >
+                Create New Ticket
+              </Link>
+            </MenuItem>
           </Menu>           
           </div>
         </Toolbar>
     </div>
     <Switch>
-      <Route exact path='/signup' component={SignUpPage} />
+      <Route exact path='/' component={DevDeskHome} />
+      <Route path='/signup' component={SignUpPage} />
       <Route path='/login' component={SignInPage}/>
       <PrivateRoute path='/createticket' component={CreateTicket} />
+      <PrivateRoute path='/student' component={StudentLandingPage} />
+      <PrivateRoute path='/helper' component={HelperLandingPage} />
     </Switch>
-    </Router>
-  );
+    </div>
+  )
 }
