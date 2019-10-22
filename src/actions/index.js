@@ -30,7 +30,7 @@ export const filterTickets = category => ({
 
 export const deleteTicket = id => dispatch => {
   axiosWithAuth().delete(`https://devdesk-backend.herokuapp.com/api/tickets/${id}`)
-  .then( res => {
+  .then(() => {
     dispatch({ type: DELETE_TICKET, payload: id })
   })
   .catch( err => {
