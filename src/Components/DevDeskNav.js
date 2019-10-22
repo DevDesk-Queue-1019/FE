@@ -13,6 +13,7 @@ import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
 import PrivateRoute from './PrivateRoute';
 import CreateTicket from './CreateTicket';
+import StudentLandingPage from './Student/StudentLandingPage';
 
 // Styling
 const useStyles = makeStyles(theme => ({

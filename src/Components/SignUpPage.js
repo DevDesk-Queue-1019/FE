@@ -85,3 +85,28 @@ handleSubmit(values, { setStatus, resetForm }) {
 const UserFormWithFormik = formikSignUp(Signup);
 
 export default UserFormWithFormik;
+
+// const Signup = () => {
+//   const { register, handleSubmit, watch, errors } = useForm()
+//   const onSubmit = data => {
+//     console.log(data);
+//     axios.post("https://devdesk-backend.herokuapp.com/api/auth/register", data)
+//     .then( res => {
+//       console.log(res.data)
+//     })
+//    }
+
+
+//   return (
+    
+//     <form onSubmit={handleSubmit(onSubmit)}>
+//       <input name="username" defaultValue="test" ref={register} />
+      
+//       <input name="password" ref={register({ required: true })} />
+      
+//       <input type="submit" />
+//     </form>
+//   )
+// }
+
+// export default Signup;
