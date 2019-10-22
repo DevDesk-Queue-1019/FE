@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 import '../index.css';
 
 
-export const Button = styled.button`
+const Button = styled.button`
   width: 300px;
   height: 40px;
   background-color: #BB1333;
@@ -17,7 +17,7 @@ export const Button = styled.button`
   font-size: 1.3rem;
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
   color: #f0f4f7;

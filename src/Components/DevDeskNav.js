@@ -18,8 +18,6 @@ import PrivateRoute from './PrivateRoute';
 import CreateTicket from './Student/CreateTicket';
 
 
-import styled from 'styled-components';
-
 // Styling
 const useStyles = makeStyles(theme => ({
   root: {
