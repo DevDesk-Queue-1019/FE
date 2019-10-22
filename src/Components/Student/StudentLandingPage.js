@@ -1,11 +1,14 @@
-import React from "react";
+import React from 'react';
+import StudentNav from './StudentNav';
 
-const StudentLandingPage = () => {
-    return(
-        <div>
-            <h1>Student Landing Page...</h1>
-        </div>
-    )
+
+function StudentLandingPage() {
+  return (
+    <div className="App">
+        <div>Studnet Langding Page</div>
+        <StudentNav/>
+    </div>
+  );
 }
 
 export default StudentLandingPage;

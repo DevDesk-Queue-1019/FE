@@ -11,6 +11,8 @@ import MenuItem from '@material-ui/core/MenuItem';
 import lambdaLogo from '../images/lambda-logo.png';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
+import StudentLandingPage from './Student/StudentLandingPage';
+import HelperLandingPage from './Helper/HelperLandingPage';
 import PrivateRoute from './PrivateRoute';
 import CreateTicket from './CreateTicket';
 
@@ -95,17 +97,17 @@ export default function App() {
               horizontal: 'right',
             }}
           >
-            <MenuItem onClick={handleClose} className={classes.menuLinks}>Student DevDesk</MenuItem>
-            <MenuItem onClick={handleClose} className={classes.menuLinks}>Helper DevDesk</MenuItem>
-            <MenuItem>
-              <Link to='/createticket' className={classes.menuLinks} >Create New Ticket</Link></MenuItem>
-          </Menu>           
+            <MenuItem><Link to='/student' className={classes.menuLinks}>Student DevDesk</Link></MenuItem>
+            <MenuItem><Link to='/helper' className={classes.menuLinks}>Helper DevDesk</Link></MenuItem>
+            <MenuItem><Link to='/createticket' className={classes.menuLinks}>Create New Ticket</Link></MenuItem></Menu>           
           </div>
         </Toolbar>
     </div>
     <Switch>
       <Route exact path='/signup' component={SignUpPage} />
-      <Route path='/login' component={SignInPage}/>
+      <Route exact path='/login' component={SignInPage}/>
+      <Route exact path='/student' component={StudentLandingPage} />
+      <Route exact path='/helper' component={HelperLandingPage} />
       <PrivateRoute path='/createticket' component={CreateTicket} />
     </Switch>
     </Router>
