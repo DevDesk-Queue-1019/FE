@@ -1,5 +1,5 @@
 import React from 'react';
-import DevDeskNav from './Components/DevDeskNav';
+import DevDeskNav from './components/DevDeskNav';
 
 import './App.css';
 

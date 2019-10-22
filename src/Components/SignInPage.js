@@ -66,7 +66,7 @@ const formikSignIn = withFormik({
       .then(result => {
         console.log(result);
         setStatus(result.data);
-        localStorage.setItem('token', result.data);
+        localStorage.setItem('token', result.data.token);
         resetForm();
         props.history.push('/createticket');
       })
