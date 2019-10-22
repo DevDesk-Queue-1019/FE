@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import DevDeskNav from './DevDeskNav';
+import Helpdesk from '../images/helpdesk.jpg';
+import '../index.css';
 
 const StyledLandingPage = styled.div`
   display: flex;
@@ -15,6 +17,7 @@ const StyledMain = styled.main`
   align-items: center;
   min-height: 70vh;
   padding: 50px 20px;
+  backgound-image: fixed;
   @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
     padding: 10px;
@@ -33,7 +36,7 @@ const StyledCaption = styled.div`
   }
   a button {
     margin: 20px 25px 20px 0;
-    background: #BB1331;
+    background: #13131f;
     color: #fdfdfd;
     font-size: 15px;
     width: 120px;
@@ -66,27 +69,28 @@ width: 50%;
 `;
 
 const DevDeskHome = () => (
+
   <StyledLandingPage>
     <DevDeskNav />
+    <img src={Helpdesk} alt='help desk' className='helpdesk-img'/>
     <StyledMain>
       <StyledCaption>
         <h2>
           Lambda DevDesk Queue: 
         </h2>
         <h6>We Answer All The Questions?</h6>
-        <Link to="/join">
-          <button>Register</button>
-        </Link>
         <Link to="/login">
           <button>Login</button>
         </Link>
+        <Link to="/signup">
+          <button>SignUp</button>
+        </Link>
       </StyledCaption>
-
-      <StyledHeroImage>
-        <img src="src\img\lambda-school-vector-logo.png" alt="queue" />
-      </StyledHeroImage>
     </StyledMain>
   </StyledLandingPage>
+
+  
+
 );
 
 export default DevDeskHome;

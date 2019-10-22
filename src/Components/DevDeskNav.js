@@ -16,6 +16,8 @@ import HelperLandingPage from './Helper/HelperLandingPage';
 import PrivateRoute from './PrivateRoute';
 import CreateTicket from './CreateTicket';
 
+import styled from 'styled-components';
+
 // Styling
 const useStyles = makeStyles(theme => ({
   root: {
@@ -54,6 +56,52 @@ const useStyles = makeStyles(theme => ({
       }
   }
 }));
+
+const StyledMain = styled.main`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 10vh;
+  padding: 0px 20px;
+  backgound-image: fixed;
+  @media screen and (max-width: 700px) {
+    flex-direction: column-reverse;
+    padding: 10px;
+  }
+`;
+
+const StyledCaption = styled.div`
+  width: 45%;
+  h2 {
+    font-size: 40px;
+    line-height: 50px;
+  }
+  h6 {
+    font-size: 24px;
+    margin: 20px 0;
+  }
+  a button {
+    margin: 20px 25px 20px 0;
+    background: #13131f;
+    color: #fdfdfd;
+    font-size: 15px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid black;
+    border-radius: 3px;
+  }
+  a button:hover {
+    cursor: pointer;
+  }
+  @media screen and (max-width: 700px) {
+    width: 90%;
+    text-align: center;
+    h2 {
+      font-size: 30px;
+      line-height: 40px;
+    }
+  }
+`;
 
 // App
 export default function App() {
@@ -97,17 +145,30 @@ export default function App() {
               horizontal: 'right',
             }}
           >
+            {/* <MenuItem><Link to='/home' className={classes.menuLinks}>Home</Link></MenuItem> */}
             <MenuItem><Link to='/student' className={classes.menuLinks}>Student DevDesk</Link></MenuItem>
             <MenuItem><Link to='/helper' className={classes.menuLinks}>Helper DevDesk</Link></MenuItem>
             <MenuItem><Link to='/createticket' className={classes.menuLinks}>Create New Ticket</Link></MenuItem></Menu>           
           </div>
         </Toolbar>
+
+        <div>  
+          <StyledMain>
+            <StyledCaption>
+              <h2>DevDesk Queue:</h2>
+              <h6>We Answer All The Questions?</h6>
+            </StyledCaption>
+          </StyledMain>
+        </div>  
+      
+
     </div>
     <Switch>
+      {/* <Route exact path='/' component={Home} /> */}
       <Route exact path='/signup' component={SignUpPage} />
-      <Route path='/login' component={SignInPage}/>
-      <Route path='/student' component={StudentLandingPage} />
-      <Route path='/helper' component={HelperLandingPage} />
+      <Route exact path='/login' component={SignInPage}/>
+      <Route exact path='/student' component={StudentLandingPage} />
+      <Route exact path='/helper' component={HelperLandingPage} />
       <PrivateRoute path='/createticket' component={CreateTicket} />
     </Switch>
     </Router>
