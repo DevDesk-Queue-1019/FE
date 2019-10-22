@@ -2,15 +2,18 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import lambdaLogo from '../../images/lambda-logo.png';
 
-const StyledStudentNav = styled.nav`
+
+const StyledHelperNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #101822;
+  background: #14121F;
   padding: 7px 15px;
   border-bottom: 1px solid #777777;
   margin-bottom: 20px;
+  
   div {
     display: flex;
     align-items: center;
@@ -18,13 +21,17 @@ const StyledStudentNav = styled.nav`
   div img {
     width: 50px;
     height: 50px;
+    padding-left: 10px;
   }
   div h1 {
-    font-size: 20px;
+    font-size: 1.5rem;
+    padding-left: 20px;
+    color: white;
   }
   div a {
     margin: 0 10px;
     font-size: 14px;
+    text-decoration: none;
   }
   div a:hover {
     text-decoration: underline;
@@ -32,11 +39,9 @@ const StyledStudentNav = styled.nav`
   div a img {
     width: 30px;
     height: 30px;
+    
   }
-  .selected {
-    color: #247adb;
-    font-weight: bold;
-  }
+
   @media screen and (max-width: 600px) {
     div h1 {
       display: none;
@@ -53,39 +58,32 @@ const StyledStudentNav = styled.nav`
   }
 `;
 
-const StudentNav = () => {
+const HelperNav = () => {
   const handleLogout = () => localStorage.clear();
 
   return (
-    <StyledStudentNav>
+    <StyledHelperNav>
       <Link to="/home">
         <div>
-          <img src="../../assets/dev.svg" alt="logo" />
+          <img src={lambdaLogo} alt="logo" />
 
-          <h1>DevDesk</h1>
+          <h1>Lambda DevDesk - Helper Portal</h1>
         </div>
       </Link>
 
       <div>
-        <NavLink to="/home" activeClassName="selected">
-          Help Channel
+        <NavLink to="/open_tickets">
+          <h1>Open Tickets</h1>
         </NavLink>
-        <NavLink to="/create_ticket" activeClassName="selected">
-          Create Ticket
-        </NavLink>
-        <NavLink to="/my_tickets" activeClassName="selected">
-          My Tickets
+        <NavLink to="/my_tickets">
+          <h1>My Tickets</h1>
         </NavLink>
         <Link to="/">
-          <img
-            src="../../../assets/exit.svg"
-            alt="exit"
-            onClick={handleLogout}
-          />
+          <h1>Exit</h1>
         </Link>
       </div>
-    </StyledStudentNav>
+    </StyledHelperNav>
   );
 };
 
-export default StudentNav;
+export default HelperNav;

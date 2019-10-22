@@ -2,13 +2,13 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import lambdaLogo from '../../images/lambdaLogo.png';
+import lambdaLogo from '../../images/lambda-logo.png';
 
 const StyledStudentNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #101822;
+  background: #14121F;
   padding: 7px 15px;
   border-bottom: 1px solid #777777;
   margin-bottom: 20px;
@@ -21,11 +21,15 @@ const StyledStudentNav = styled.nav`
     height: 50px;
   }
   div h1 {
-    font-size: 20px;
+    font-size: 1.5rem
+    padding-left: 20px;
+    color: white;
   }
+
   div a {
     margin: 0 10px;
     font-size: 14px;
+    text-decoration: none;
   }
   div a:hover {
     text-decoration: underline;
@@ -34,10 +38,7 @@ const StyledStudentNav = styled.nav`
     width: 30px;
     height: 30px;
   }
-  .selected {
-    color: #247adb;
-    font-weight: bold;
-  }
+ 
   @media screen and (max-width: 600px) {
     div h1 {
       display: none;
@@ -62,24 +63,16 @@ const StudentNav = () => {
       <Link to="/home">
         <div>
           <img src={lambdaLogo} alt="logo" />
-
           <h1>Lambda DevDesk - Student Portal</h1>
         </div>
       </Link>
 
       <div>
-        <NavLink to="/create_ticket" activeClassName="selected">
-          Create Ticket
-        </NavLink>
-        <NavLink to="/my_tickets" activeClassName="selected">
-          My Tickets
+        <NavLink to="/my_tickets" >
+          <h1>My Tickets</h1>
         </NavLink>
         <Link to="/">
-          <img
-            src="../../img/lambda-logo.png"
-            alt="exit"
-            onClick={handleLogout}
-          />
+            <h1>Exit</h1>
         </Link>
       </div>
     </StyledStudentNav>

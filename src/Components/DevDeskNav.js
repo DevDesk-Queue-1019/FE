@@ -105,9 +105,9 @@ export default function App() {
     </div>
     <Switch>
       <Route exact path='/signup' component={SignUpPage} />
-      <Route exact path='/login' component={SignInPage}/>
-      <Route exact path='/student' component={StudentLandingPage} />
-      <Route exact path='/helper' component={HelperLandingPage} />
+      <Route path='/login' component={SignInPage}/>
+      <Route path='/student' component={StudentLandingPage} />
+      <Route path='/helper' component={HelperLandingPage} />
       <PrivateRoute path='/createticket' component={CreateTicket} />
     </Switch>
     </Router>
