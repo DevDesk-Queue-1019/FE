@@ -1,23 +1,29 @@
 import { GET_TICKETS, FILTER_TICKETS, DELETE_TICKET } from "../actions";
 
 const initialState = {
-    tickets: []
+    tickets: [],
+    filteredTickets: []
 }
 
 export const tickets = (state = initialState, action) => {
     switch(action.type){
         case GET_TICKETS:
-            console.log("GET_Tickets")
             return {
                 ...state,
                 tickets: [...action.payload]
             }
         case FILTER_TICKETS:
-            console.log("filter tickets called " + action.payload);
-            return state;
+            let newFilteredTickets = state.tickets.filter( ticket => ticket.type === action.payload )
+            return {
+                ...state,
+                filteredTickets: [...newFilteredTickets]
+            }
         case DELETE_TICKET:
-            
-            return state;
+            let newTickets = state.tickets.filter( ticket => !(ticket.id === action.payload))
+            return {
+                ...state,
+                tickets: [...newTickets]
+            }
         default:
             return state;
     }
