@@ -23,8 +23,6 @@ const Login = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-
-    console.log(user);
     if (status) {      
       setUser([...user, status]);
     }
