@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import DevDeskNav from './DevDeskNav';
+import SignInPage from './SignInPage';
+import SignUpPage from './SignUpPage';
 
 const StyledLandingPage = styled.div`
   display: flex;
@@ -22,9 +23,9 @@ const StyledMain = styled.main`
 `;
 
 const StyledCaption = styled.div`
-  width: 45%;
+  width: 80%;
   h2 {
-    font-size: 40px;
+    font-size: 60px;
     line-height: 50px;
   }
   h6 {
@@ -54,39 +55,29 @@ const StyledCaption = styled.div`
   }
 `;
 
-const StyledHeroImage = styled.div`
-width: 50%;
-  img {
-    max-width: 100%;
-    width: auto;
-  }
-  @media screen and (max-width: 700px) {
-    width: 90%;
-  }
-`;
-
 const DevDeskHome = () => (
+  <div>
   <StyledLandingPage>
-    <DevDeskNav />
     <StyledMain>
       <StyledCaption>
         <h2>
-          Lambda DevDesk Queue: 
+          Lambda DevDesk Queue 
         </h2>
-        <h6>We Answer All The Questions?</h6>
-        <Link to="/join">
+        
+        <h6>The answer to your questions</h6>
+        <Link to="/signup">
           <button>Register</button>
         </Link>
         <Link to="/login">
           <button>Login</button>
         </Link>
       </StyledCaption>
-
-      <StyledHeroImage>
-        <img src="src\img\lambda-school-vector-logo.png" alt="queue" />
-      </StyledHeroImage>
     </StyledMain>
+
   </StyledLandingPage>
+    <Route path='/signup' component={SignUpPage} />
+    <Route path='login' component={SignInPage} />
+  </div>
 );
 
 export default DevDeskHome;

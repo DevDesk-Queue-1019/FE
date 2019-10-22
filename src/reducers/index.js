@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import { tickets } from "./tickets.js";
+import { tickets } from "./tickets";
+import { addTicket } from "./AddTicket";
 
 const rootReducer = combineReducers({
-    tickets
+    tickets,
+    addTicket,
 })
 
 export default rootReducer;

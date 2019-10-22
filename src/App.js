@@ -1,13 +1,18 @@
 import React from 'react';
-import DevDeskNav from './components/DevDeskNav';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import DevDeskNav from './Components/DevDeskNav';
+import DevDeskHome from './Components/DevDeskHome';
 
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
         <DevDeskNav />
-    </div>
+        {/* <Route exact path="/" component={DevDeskHome} /> */}
+      </div>      
+    </Router>
   );
 }
 
