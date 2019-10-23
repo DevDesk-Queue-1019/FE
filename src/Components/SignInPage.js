@@ -55,10 +55,10 @@ const Login = ({ errors, touched, status }) => {
     <div>
       <Title>Login</Title>
       <Form>
-        <Field required id="outlined-required" className={classes.textField} margin="normal" variant="outlined" text="type" name="username" placeholder="Username" />
+        <Field required  text="type" name="username" placeholder="Username" />
         {touched.username && errors.username && <p>{errors.username}</p>}<br />
 
-        <Field required id="outlined-required" className={classes.textField} margin= "normal" variant="outline" type="password" name="password" placeholder="Password" />
+        <Field required type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p>{errors.password}</p>}
 
         <Button type="submit" value="Login">Submit!</Button>
