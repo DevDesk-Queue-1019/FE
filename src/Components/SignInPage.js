@@ -57,16 +57,15 @@ const Login = ({ errors, touched, status }) => {
 
   return (
 
-<<<<<<< HEAD
 
-    <div>
-      <Title>Login</Title>
-      <Form>
-        <Field required id="outlined-required" className={classes.textField} margin="normal" variant="outlined" text="type" name="username" placeholder="Username" />
-        {touched.username && errors.username && <p>{errors.username}</p>}<br />
+    // <div>
+    //   <Title>Login</Title>
+    //   <Form>
+    //     <Field required id="outlined-required" className={classes.textField} margin="normal" variant="outlined" text="type" name="username" placeholder="Username" />
+    //     {touched.username && errors.username && <p>{errors.username}</p>}<br />
 
-        <Field required id="outlined-required" className={classes.textField} margin= "normal" variant="outline" type="password" name="password" placeholder="Password" />
-=======
+    //     <Field required id="outlined-required" className={classes.textField} margin= "normal" variant="outline" type="password" name="password" placeholder="Password" />
+
     <div className="form-container">
       <Title>Login</Title>
       <Form className='form-form'>
@@ -77,7 +76,6 @@ const Login = ({ errors, touched, status }) => {
         <label className='form-label'>Password</label>
         <Field type="password" name="password" placeholder="Password" className='form-field'/>
 
->>>>>>> 437a19962777d8c59dd80f8cc8cea7ef4d8d786b
         {touched.password && errors.password && <p>{errors.password}</p>}
 
         <Button type="submit" value="Login">Submit</Button>
