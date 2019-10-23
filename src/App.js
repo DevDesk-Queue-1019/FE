@@ -1,11 +1,15 @@
 import React from 'react';
-import './App.css';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+import DevDeskNav from './components/DevDeskNav';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Dev Desk Queue</h1>
-    </div>
+    <Router>
+      <div className="App">
+        <DevDeskNav />
+      </div>      
+    </Router>
   );
 }
 
