@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 import CreateTicket from './CreateTicket';
 import MyTickets from '../Student/StudentTicketList';
 import styled from 'styled-components';
+import TicketCard from "../Helper/TicketCard";
+// import styled from 'styled-components';
+import { useDispatch, useSelector } from "react-redux";
+import { getTickets, filterTickets } from "../../actions";
 
 const Button = styled.button`
   width: 300px;
@@ -25,9 +29,16 @@ const Title = styled.h1`
 `;
 
 const StudentLandingPage = () => {
+    const dispatch = useDispatch();
+    const tickets = useSelector(state => state.tickets.tickets);
+
+    useEffect(() => {
+        dispatch(getTickets());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
     return(
         <div>
-            <h1>Student Landing Page...</h1>
+            <h1>Welcome Student!</h1>
             <Button>
                 <Link to='/createticket'>New Ticket</Link>                
             </Button>
@@ -36,6 +47,11 @@ const StudentLandingPage = () => {
             </Button>
             <PrivateRoute path='/createticket' component={CreateTicket} />
             <PrivateRoute path='/my_tickets' component={MyTickets} />
+            {
+                tickets ? tickets.map( ticket => {
+                    return <TicketCard key={ticket.id} id={ticket.id} title={ticket.title} description={ticket.description} tried={ticket.tried} type={ticket.type} />
+                }) : <h1>Loading...</h1>
+            }
         </div>
     )
 
