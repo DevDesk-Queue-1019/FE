@@ -1,8 +1,7 @@
 import React from 'react';
+
 import { BrowserRouter as Router } from 'react-router-dom';
 import DevDeskNav from './components/DevDeskNav';
-
-import './App.css';
 
 function App() {
   return (
