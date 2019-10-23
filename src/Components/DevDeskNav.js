@@ -132,7 +132,7 @@ export default function App() {
     <Switch>
       <Route exact path='/' component={DevDeskHome} />
       <Route path='/signup' component={SignUpPage} />
-      <Route path='/login' component={SignInPage}/>
+      <Route path='/login' component={SignInPage} />
       <PrivateRoute path='/createticket' component={CreateTicket} />
       <PrivateRoute path='/student' component={StudentLandingPage} />
       <PrivateRoute path='/helper' component={HelperLandingPage} />

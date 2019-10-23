@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import { getTickets } from "./getOpenTickets";
+import { tickets } from "./tickets";
 import { addTicket } from "./AddTicket";
 
 const rootReducer = combineReducers({
-    getTickets,
+    tickets,
     addTicket,
 })
 
