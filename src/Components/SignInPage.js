@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -19,6 +21,23 @@ export const Title = styled.h1`
   font-size: 2.2em;
 `;
 
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  dense: {
+    marginTop: theme.spacing(2),
+  },
+  menu: {
+    width: 200,
+  },
+}));
+
 const Login = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
@@ -28,16 +47,18 @@ const Login = ({ errors, touched, status }) => {
     }
   }, [status, user]);
 
+    const classes = useStyles();
+
   return (
+
+
     <div>
       <Title>Login</Title>
       <Form>
-        <label>Username</label>
-        <Field text="type" name="username" placeholder="Username" />
-        {touched.username && errors.username && <p>{errors.username}</p>}
+        <Field required id="outlined-required" className={classes.textField} margin="normal" variant="outlined" text="type" name="username" placeholder="Username" />
+        {touched.username && errors.username && <p>{errors.username}</p>}<br />
 
-        <label>Password</label>
-        <Field type="password" name="password" placeholder="Password" />
+        <Field required id="outlined-required" className={classes.textField} margin= "normal" variant="outline" type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p>{errors.password}</p>}
 
         <Button type="submit" value="Login">Submit!</Button>
