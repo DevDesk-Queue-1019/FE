@@ -4,9 +4,11 @@ import styled from 'styled-components';
 import SignInPage from './SignInPage';
 import SignUpPage from './SignUpPage';
 
+
 const StyledLandingPage = styled.div`
   display: flex;
   flex-direction: column;
+  
   width: 100%;
 `;
 
@@ -16,6 +18,7 @@ const StyledMain = styled.main`
   align-items: center;
   min-height: 70vh;
   padding: 50px 20px;
+  
   @media screen and (max-width: 700px) {
     flex-direction: column-reverse;
     padding: 10px;
@@ -23,7 +26,7 @@ const StyledMain = styled.main`
 `;
 
 const StyledCaption = styled.div`
-  width: 80%;
+
   h2 {
     font-size: 60px;
     line-height: 50px;
@@ -34,7 +37,7 @@ const StyledCaption = styled.div`
   }
   a button {
     margin: 20px 25px 20px 0;
-    background: #BB1331;
+    background: #13131f;
     color: #fdfdfd;
     font-size: 15px;
     width: 120px;

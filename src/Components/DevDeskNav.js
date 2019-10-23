@@ -12,10 +12,11 @@ import lambdaLogo from '../images/lambda-logo.png';
 import DevDeskHome from './DevDeskHome';
 import SignUpPage from './SignUpPage';
 import SignInPage from './SignInPage';
-import PrivateRoute from './PrivateRoute';
-import CreateTicket from './Student/CreateTicket';
 import StudentLandingPage from './Student/StudentLandingPage';
 import HelperLandingPage from './Helper/HelperLandingPage';
+import PrivateRoute from './PrivateRoute';
+import CreateTicket from './Student/CreateTicket';
+
 
 // Styling
 const useStyles = makeStyles(theme => ({
@@ -126,6 +127,7 @@ export default function App() {
           </Menu>           
           </div>
         </Toolbar>
+
     </div>
     <Switch>
       <Route exact path='/' component={DevDeskHome} />

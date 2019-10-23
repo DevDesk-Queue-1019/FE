@@ -11,3 +11,50 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.form-container {
+  width: 50%;
+  /* height: 800px; */
+  margin: auto;
+  background: #451526;
+  color: #f0f4f7;
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  margin-top: 20px;
+}
+
+
+
+.form-form {
+  display: grid;
+  width: 100%;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.ticket-form {
+  display: grid;
+  grid-row-gap: 1em;
+  width: 100%;
+  justify-content: center;
+  font-size: 1.3rem;
+}
+
+.form-label {
+  padding-top: 20px;
+}
+
+.form-field {
+  border-radius: 20px;
+  height: 30px;
+  width: 
+}
+
+/* .helpdesk-img {
+  width: 100%;
+  height: auto;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-attachment: fixed;
+} */

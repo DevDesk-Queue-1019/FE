@@ -5,20 +5,26 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
+import '../index.css';
 
-export const Button = styled.button`
+
+const Button = styled.button`
   width: 300px;
-  height: 35px;
+  height: 40px;
   background-color: #BB1333;
   color: #fff;
-  border-radius: 3px;
+  border-radius: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
 `;
 
-export const Title = styled.h1`
+const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  color: #4d4d4d;
+  color: #f0f4f7;
   font-size: 2.2em;
+  text-align: center;
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -51,17 +57,19 @@ const Login = ({ errors, touched, status }) => {
 
   return (
 
-
-    <div>
+    <div className="form-container">
       <Title>Login</Title>
-      <Form>
-        <Field required  text="type" name="username" placeholder="Username" />
-        {touched.username && errors.username && <p>{errors.username}</p>}<br />
+      <Form className='form-form'>
+        <label className='form-label'>Username</label>
+        <Field text="type" name="username" placeholder="Username" className='form-field'/>
+        {touched.username && errors.username && <p>{errors.username}</p>}
 
-        <Field required type="password" name="password" placeholder="Password" />
+        <label className='form-label'>Password</label>
+        <Field type="password" name="password" placeholder="Password" className='form-field'/>
+
         {touched.password && errors.password && <p>{errors.password}</p>}
 
-        <Button type="submit" value="Login">Submit!</Button>
+        <Button type="submit" value="Login">Submit</Button>
       </Form>
       {user.map(users => (
         <p key={users.id}>{users.message}</p>
@@ -78,8 +86,8 @@ const formikSignIn = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    username: Yup.string().required(),
-    password: Yup.string().required()
+    username: Yup.string().required('***Username Required!***'),
+    password: Yup.string().required('***Password Required!***')
   }),
   handleSubmit(values, { setStatus, resetForm, props }) {
     console.log(props);
