@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 import { addTicket } from '../../actions';
+<<<<<<< HEAD
 import '../../index.css';
 import styled from 'styled-components';
 
@@ -22,33 +22,30 @@ export const Title = styled.h1`
   font-size: 2.2em;
   text-align: center;
 `;
+=======
+import useForm from 'react-hook-form';
+import { useDispatch } from "react-redux";
+>>>>>>> 78347360df8a2aac72a21fdecc50c740aa160e82
 
-const CreateTicket = props => {
-  const id = parseInt(localStorage.getItem('owner'));
-  const defaultState = {
-    title: '',
-    description: '',
-    type: '',
-    tried: '',
-    owner: id,
-    assigned: false,
-    date: '',
-  }
+const CreateTicket = () => {
+  
+  const { register, handleSubmit } = useForm();
+  
+  const dispatch = useDispatch();
 
-  const [ticket, setTicket] = useState([defaultState]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.addTicket(ticket);
-  }
-  const handleChanges = e => {
-    setTicket({
-      ...ticket,
-      [e.target.name]: e.target.value
-    });
+  const onSubmit = data => {
+    let ownerId = parseInt(localStorage.getItem("owner"));
+    let input = {
+      ...data,
+      date: new Date().toISOString(),
+      assigned: null,
+      owner: ownerId
+    }
+    dispatch(addTicket(input));
   }
 
   return (
+<<<<<<< HEAD
     <div className='form-container'>
       <Title>Create A New Ticket</Title>
       <form onSubmit={handleSubmit} className='ticket-form'>
@@ -96,10 +93,16 @@ const CreateTicket = props => {
         <Button type='submit'>Add Ticket</Button>
       </form>
     </div>
+=======
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input name="title" placeholder="title" ref={register} />
+      <input name="description" placeholder="description" ref={register} />
+      <input name="type" placeholder="type" ref={register} />
+      <input name="tried" placeholder="tried" ref={register} />
+      <input type="submit" value="Submit" />
+    </form>
+>>>>>>> 78347360df8a2aac72a21fdecc50c740aa160e82
   )
 }
 
-export default connect(
-  null,
-  { addTicket }
-)( CreateTicket );
+export default CreateTicket;

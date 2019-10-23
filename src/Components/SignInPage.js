@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import '../index.css';
@@ -25,27 +27,44 @@ const Title = styled.h1`
   text-align: center;
 `;
 
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+  },
+  dense: {
+    marginTop: theme.spacing(2),
+  },
+  menu: {
+    width: 200,
+  },
+}));
+
 const Login = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
   useEffect(() => {
-
-    console.log(user);
     if (status) {      
       setUser([...user, status]);
     }
   }, [status, user]);
 
-  return (
-    <div className="form-container">
-      <Title>Login</Title>
-      <Form className='form-form'>
-        <label className='form-label'>Username</label>
-        <Field text="type" name="username" placeholder="Username" className='form-field'/>
-        {touched.username && errors.username && <p>{errors.username}</p>}
+    const classes = useStyles();
 
-        <label className='form-label'>Password</label>
-        <Field type="password" name="password" placeholder="Password" className='form-field'/>
+  return (
+
+
+    <div>
+      <Title>Login</Title>
+      <Form>
+        <Field required id="outlined-required" className={classes.textField} margin="normal" variant="outlined" text="type" name="username" placeholder="Username" />
+        {touched.username && errors.username && <p>{errors.username}</p>}<br />
+
+        <Field required id="outlined-required" className={classes.textField} margin= "normal" variant="outline" type="password" name="password" placeholder="Password" />
         {touched.password && errors.password && <p>{errors.password}</p>}
 
         <Button type="submit" value="Login">Submit</Button>
