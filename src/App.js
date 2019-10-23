@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import DevDeskNav from './components/DevDeskNav';
+import DevDeskNav from '../src/Components/DevDeskNav';
 
 
 function App() {

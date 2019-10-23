@@ -12,7 +12,6 @@ const HelperLandingPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-const HelperLandingPage = () => {
     return(
         <div>
             <h1>Welcome Helper</h1>

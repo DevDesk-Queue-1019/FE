@@ -1,31 +1,7 @@
 import React from 'react';
 import { addTicket } from '../../actions';
-<<<<<<< HEAD
-import '../../index.css';
-import styled from 'styled-components';
-
-const Button = styled.button`
-  width: 300px;
-  height: 40px;
-  background-color: #BB1333;
-  color: #fff;
-  border-radius: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  font-size: 1.3rem;
-`;
-
-export const Title = styled.h1`
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
-  color: #f0f4f7;
-  font-size: 2.2em;
-  text-align: center;
-`;
-=======
 import useForm from 'react-hook-form';
 import { useDispatch } from "react-redux";
->>>>>>> 78347360df8a2aac72a21fdecc50c740aa160e82
 
 const CreateTicket = () => {
   
@@ -45,7 +21,6 @@ const CreateTicket = () => {
   }
 
   return (
-<<<<<<< HEAD
     <div className='form-container'>
       <Title>Create A New Ticket</Title>
       <form onSubmit={handleSubmit} className='ticket-form'>
@@ -93,15 +68,6 @@ const CreateTicket = () => {
         <Button type='submit'>Add Ticket</Button>
       </form>
     </div>
-=======
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input name="title" placeholder="title" ref={register} />
-      <input name="description" placeholder="description" ref={register} />
-      <input name="type" placeholder="type" ref={register} />
-      <input name="tried" placeholder="tried" ref={register} />
-      <input type="submit" value="Submit" />
-    </form>
->>>>>>> 78347360df8a2aac72a21fdecc50c740aa160e82
   )
 }
 
