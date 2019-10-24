@@ -54,7 +54,10 @@ export const addTicket = ticket => dispatch => {
     });
 };
 
-export const getStudentTickets = id => ({
-  type: GET_STUDENT_TICKETS,
-  payload: id
-})
+export const getStudentTickets = id => dispatch => {
+  axiosWithAuth().get("https://devdesk-backend.herokuapp.com/api/tickets/")
+  .then( res => {
+    let studentTickets = res.data.filter( ticket => ticket.owner === id )
+    dispatch({ type: GET_STUDENT_TICKETS, payload: studentTickets })
+  })
+}

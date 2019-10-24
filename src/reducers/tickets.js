@@ -71,9 +71,9 @@ export const tickets = (state = initialState, action) => {
                 tickets: [...newTickets]
             }
         case GET_STUDENT_TICKETS:
-            // let newStudentTickets = state.tickets.filter( ticket => ticket.)
             return {
-                ...state
+                ...state,
+                studentTickets: [...action.payload]
             }
         default:
             return state;
