@@ -19,13 +19,10 @@ export const Button = styled.button`
 export const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  color: #f0f4f7;
+  color: #14121F;
   font-size: 2.2em;
   text-align: center;
 `;
-
-
-
 
 const Signup = ({ errors, touched, status }) => {
 
@@ -38,19 +35,21 @@ useEffect(() => {
 }, [status, user]);
 
 return (
+  <div className='hd-img'>
+    <div className='hero-overlay'></div>
   <div className="form-container">
     <Title>Sign Up</Title>
     <Form className='form-form'>
       <label className='form-label'>Username</label>
-      <Field text="type" name="username" placeholder="Username" className='form-field' />
+      <Field text="type" name="username" placeholder="Username*" className='form-field' />
       {touched.username && errors.username && <p>{errors.username}</p>}
 
       <label className='form-label'>Password</label>
-      <Field type="password" name="password" placeholder="Password" className='form-field' />
+      <Field type="password" name="password" placeholder="Current Password*" className='form-field' />
       {touched.password && errors.password && <p>{errors.password}</p>}
 
       <label className='form-label'>User Type</label>
-      <Field text="type" name="authType" placeholder="authType" className='form-field' />
+      <Field text="type" name="authType" placeholder="user, helper, or admin*" className='form-field' />
       {touched.authType && errors.authType && <p>{errors.authType}</p>}
 
       <Button type="submit" value="Login">Submit</Button>
@@ -58,6 +57,7 @@ return (
     {user.map(users => (
       <p key={users.id}>{users.username}</p>
     ))}
+  </div>
   </div>
 )
 }
@@ -73,7 +73,7 @@ mapPropsToValues({ username, password, authType, }) {
 validationSchema: Yup.object().shape({
   username: Yup.string().required('***Please choose your Username***'),
   password: Yup.string().required('***Please enter desired password***'),
-  authType: Yup.string().required('***Student, Helper, or Admin?***')
+  authType: Yup.string().required('***user, helper, or admin?***')
 }),
 handleSubmit(values, { setStatus, resetForm }) {
   axios.post("https://devdesk-backend.herokuapp.com/api/auth/register", values)
