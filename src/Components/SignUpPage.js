@@ -45,7 +45,7 @@ return (
       {touched.username && errors.username && <p>{errors.username}</p>}
 
       <label className='form-label'>Password</label>
-      <Field type="password" name="password" placeholder="Current Password*" className='form-field' />
+      <Field type="password" name="password" placeholder="Desired Password*" className='form-field' />
       {touched.password && errors.password && <p>{errors.password}</p>}
 
       <label className='form-label'>User Type</label>
