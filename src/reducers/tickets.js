@@ -7,10 +7,14 @@ import {
     ADD_TICKET_START,
     ADD_TICKET_SUCCESS,
     ADD_TICKET_ERR,
+    GET_STUDENT_TICKETS
 } from "../actions";
 
 const initialState = {
     tickets: [],
+    loading: true,
+    err: null,
+    studentTickets: []
 }
 
 export const tickets = (state = initialState, action) => {
@@ -43,7 +47,7 @@ export const tickets = (state = initialState, action) => {
             console.log(state);
             return {
                 ...state,
-                tickets: action.payload,
+                tickets: [...state.tickets, action.payload],
                 loading: false,
                 error: ''
             }
@@ -61,9 +65,15 @@ export const tickets = (state = initialState, action) => {
             }
         case DELETE_TICKET:
             let newTickets = state.tickets.filter( ticket => ticket.id !== action.payload )
+            console.log(state.tickets)
             return {
                 ...state,
                 tickets: [...newTickets]
+            }
+        case GET_STUDENT_TICKETS:
+            // let newStudentTickets = state.tickets.filter( ticket => ticket.)
+            return {
+                ...state
             }
         default:
             return state;
