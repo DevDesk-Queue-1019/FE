@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import useForm from 'react-hook-form';
+// import axios from 'axios';
 import styled from 'styled-components';
-import { Form, Field, withFormik } from 'formik';
-import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+// import { Form, Field, withFormik } from 'formik';
+// import * as Yup from 'yup';
+import { addTicket } from '../actions';
 
 
 export const Button = styled.button`
@@ -25,75 +28,36 @@ export const Title = styled.h1`
 `;
 
 
-const CreateTicket = ({ errors, touched, status }) => {
+const CreateTicket = props => {
 
-const [ticket, setTicket] = useState([]);
+  console.log('CreateTicket props', props);
 
-useEffect(() => {
-  if (status) {
-    setTicket([...ticket, status]);
+  const { register, handleSubmit } = useForm();
+
+  const dispatch = useDispatch();
+
+  const onSubmit = data => {
+    let ownerId = parseInt(localStorage.getItem("owner"));
+    let input = {
+      ...data,
+      date: new Date().toISOString(),
+      assigned: null,
+      owner: ownerId
+    }
+    dispatch(addTicket(input));
+    // props.history.push('/student');
   }
-}, [status, ticket]);
 
-return (
-  <div className="form-container">
-    <Title>Create A New Ticket</Title>
-    <Form className='form-form'>
-      <label className='form-label'>Title:</label>
-      <Field text="type" name="title" placeholder="Title" className='form-field' />
-      {touched.title && errors.title && <p>{errors.title}</p>}
+  return (
 
-      <label className='form-label'>Date:</label>
-      <Field type="date" name="date" min="2019-01-01" max="2022-12-31" className='form-field'/>
-      {touched.date && errors.date && <p>{errors.date}</p>}
-
-      <label className='form-label'>Type:</label>
-      <Field type="text" name="type" placeholder="Ticket Type" className='form-field' />
-      {touched.type && errors.type && <p>{errors.type}</p>}
-
-      <label className='form-label'>Tried:</label>
-      <Field component="textarea" name="tried" placeholder="Let us know what didn't work..." className='form-field' />
-      {touched.tried && errors.tried && <p>{errors.description}</p>}
-
-      <label className='form-label'>Description:</label>
-      <Field component="textarea" name="description" placeholder="Explain your issue here..." className='form-field' />
-      {touched.description && errors.description && <p>{errors.description}</p>}
-
-      <Button type="submit" value="CreateTicket">Submit</Button>
-    </Form>
-    {ticket.map(tickets => (
-      <p key={tickets.id}>{tickets.title}</p>
-    ))}
-  </div>
-)
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input name="title" placeholder="title" ref={register} />
+      <input name="description" placeholder="description" ref={register} />
+      <input name="type" placeholder="type" ref={register} />
+      <input name="tried" placeholder="tried" ref={register} />
+      <input type="submit" value="Submit" />
+    </form>
+  )
 }
 
-const formikCreateTicket = withFormik({
-mapPropsToValues({ title, type, date, tried, description, }) {
-  return {
-    title: title || "",
-    type: type || "",
-    date: date || "",
-    tried: tried || "",
-    description: description || "",
-  };
-},
-validationSchema: Yup.object().shape({
-  title: Yup.string().required(),
-  type: Yup.string().required(),
-  description: Yup.string().required()
-}),
-handleSubmit(values, { setStatus, resetForm }) {
-  axios.post("https://devdesk-backend.herokuapp.com/api/tickets/", values)
-    .then(result => {
-      console.log(result);
-      // setStatus(result.data);
-      resetForm();
-    })
-    .catch(error => console.error(error));
-}
-});
-
-const CreateTicketWithFormik = formikCreateTicket(CreateTicket);
-
-export default CreateTicketWithFormik;
+export default CreateTicket;
