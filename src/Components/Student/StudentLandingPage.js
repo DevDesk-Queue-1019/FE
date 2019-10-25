@@ -2,12 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 import CreateTicket from '../CreateTicket';
-import StudentTicketList from './StudentTicketList';
+import MyTickets from './StudentTicketList';
 import styled from 'styled-components';
-import TicketCard from "../Helper/TicketCard";
-// import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
-// import { getTickets, filterTickets } from "../../actions";
 import { getStudentTickets } from "../../actions";
 
 const Button = styled.button`
@@ -30,23 +27,12 @@ const Title = styled.h1`
 `;
 
 const StudentLandingPage = () => {
-    // const dispatch = useDispatch();
-    // const tickets = useSelector(state => state.tickets.tickets);
-    // console.log(tickets);
-
-    // useEffect(() => {
-    //     dispatch(getTickets());
-    // // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, []);
     const dispatch = useDispatch();
-    const tickets = useSelector(state => state.tickets.studentTickets);
-    console.log(tickets);
+    const studentTickets = useSelector(state => state.tickets.studentTickets);
 
     useEffect(() => {
-        dispatch(getStudentTickets());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+        dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
+    }, [])
     return(
         <div>
             <h1>Welcome Student!</h1>
@@ -57,11 +43,11 @@ const StudentLandingPage = () => {
                  <Link to='/my_tickets'>My Tickets</Link>                
              </Button> */}
             <PrivateRoute path='/createticket' component={CreateTicket} />
-             {/* <PrivateRoute path='/my_tickets' component={StudentTicketList} /> */}
+            <PrivateRoute path='/my_tickets' component={MyTickets} />
             {
-                tickets ? tickets.map( ticket => {
-                    return <TicketCard key={ticket.id} id={ticket.id} title={ticket.title} description={ticket.description} tried={ticket.tried} type={ticket.type} />
-                }) : <h1>Loading...</h1>
+                studentTickets.map( ticket => {
+                    return <h1>{ ticket.title }</h1>
+                })
             }
         </div>
         // <StudentLandingPage />
