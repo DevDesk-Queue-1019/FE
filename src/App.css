@@ -1,5 +1,31 @@
 .App {
   text-align: center;
-  background-image: url('./images/helpdesk.jpg');
+  /* background-image: url('./images/helpdesk.jpg'); */
 }
 
+.Menu {
+  margin: 0 auto;
+  width: 80%;
+  background-color: white;
+}
+
+.DeleteButton {
+  color: #a0001e;
+  font-size: 2rem;
+  transition-duration: 0.3s;
+}
+
+.DeleteButton:hover {
+  cursor: pointer;
+  color: black;
+  justify-self: flex-start;
+}
+
+.TicketCard {
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  width: 100%;
+  margin: 15px;
+  background-color: grey;
+}

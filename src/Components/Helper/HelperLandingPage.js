@@ -1,19 +1,9 @@
 import React, { useEffect } from "react";
 import TicketCard from "./TicketCard";
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
-import { getTickets, filterTickets } from "../../actions";
-
-// const Button = styled.button`
-//   width: 300px;
-//   height: 40px;
-//   background-color: #BB1333;
-//   color: #fff;
-//   border-radius: 20px;
-//   margin-top: 40px;
-//   margin-bottom: 20px;
-//   font-size: 1.3rem;
-// `;
+import { getTickets } from "../../actions";
+import "../../App.css";
 
 // const Title = styled.h1`
 //   font-family: 'Raleway', sans-serif;
@@ -35,8 +25,8 @@ const HelperLandingPage = () => {
     }, []);
 
     return(
-        <div>
-            <h1>Welcome Helper</h1>
+        <div className="Menu">
+            <h1>{ localStorage.getItem('welcome') }</h1>
             {/* <button onClick={() => {
                 //dispatch(filterTickets("test"))
             }}>filter</button> */}

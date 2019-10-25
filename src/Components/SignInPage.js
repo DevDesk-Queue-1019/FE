@@ -79,6 +79,7 @@ const formikSignIn = withFormik({
         setStatus(result.data);
         localStorage.setItem('token', result.data.token);
         localStorage.setItem('owner', result.data.id);
+        localStorage.setItem('welcome', result.data.message);
         resetForm();    
 
         props.history.push('/student');
