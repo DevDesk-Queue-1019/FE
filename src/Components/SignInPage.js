@@ -5,7 +5,6 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import '../index.css';
 
-
 const Button = styled.button`
   width: 300px;
   height: 40px;
@@ -20,7 +19,7 @@ const Button = styled.button`
 const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  color: #f0f4f7;
+  color: #14121F;
   font-size: 2.2em;
   text-align: center;
 `;
@@ -36,16 +35,18 @@ const Login = ({ errors, touched, status }) => {
 
 
   return (
+    <div className='hd-img'>
+    <div className='hero-overlay'></div>
 
     <div className="form-container">
       <Title>Login</Title>
       <Form className='form-form'>
         <label className='form-label'>Username</label>
-        <Field text="type" name="username" placeholder="Username" className='form-field'/>
+        <Field text="type" name="username" placeholder="Username*" className='form-field'/>
         {touched.username && errors.username && <p>{errors.username}</p>}
 
         <label className='form-label'>Password</label>
-        <Field type="password" name="password" placeholder="Password" className='form-field'/>
+        <Field type="password" name="password" placeholder="Current Password*" className='form-field'/>
 
         {touched.password && errors.password && <p>{errors.password}</p>}
 
@@ -54,6 +55,7 @@ const Login = ({ errors, touched, status }) => {
       {user.map(users => (
         <p key={users.id}>{users.message}</p>
       ))}
+    </div>
     </div>
   )
 }
