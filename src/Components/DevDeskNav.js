@@ -68,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // App
-export default function App() {
+export default function DevDeskNav() {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);
