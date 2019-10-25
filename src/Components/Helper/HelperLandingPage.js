@@ -27,6 +27,7 @@ import { getTickets, filterTickets } from "../../actions";
 const HelperLandingPage = () => {
     const dispatch = useDispatch();
     const tickets = useSelector(state => state.tickets.tickets);
+    const loading = useSelector(state => state.tickets.loading);
 
     useEffect(() => {
         dispatch(getTickets());
@@ -36,11 +37,11 @@ const HelperLandingPage = () => {
     return(
         <div>
             <h1>Welcome Helper</h1>
-            <button onClick={() => {
-                dispatch(filterTickets("test"))
-            }}>filter</button>
+            {/* <button onClick={() => {
+                //dispatch(filterTickets("test"))
+            }}>filter</button> */}
             {
-                tickets ? tickets.map( ticket => {
+                !(loading) ? tickets.map( ticket => {
                     return <TicketCard key={ticket.id} id={ticket.id} title={ticket.title} description={ticket.description} tried={ticket.tried} type={ticket.type} />
                 }) : <h1>Loading...</h1>
             }

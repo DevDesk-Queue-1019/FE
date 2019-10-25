@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
 import CreateTicket from './CreateTicket';
 import MyTickets from '../Student/StudentTicketList';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentTickets } from "../../actions";
 
 const Button = styled.button`
   width: 300px;
@@ -25,6 +27,12 @@ const Title = styled.h1`
 `;
 
 const StudentLandingPage = () => {
+    const dispatch = useDispatch();
+    const studentTickets = useSelector(state => state.tickets.studentTickets);
+
+    useEffect(() => {
+        dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
+    }, [])
     return(
         <div>
             <h1>Student Landing Page...</h1>
@@ -36,6 +44,11 @@ const StudentLandingPage = () => {
             </Button>
             <PrivateRoute path='/createticket' component={CreateTicket} />
             <PrivateRoute path='/my_tickets' component={MyTickets} />
+            {
+                studentTickets.map( ticket => {
+                    return <h1>{ ticket.title }</h1>
+                })
+            }
         </div>
     )
 
