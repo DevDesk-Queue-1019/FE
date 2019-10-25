@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
-import { makeStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import '../index.css';
@@ -27,23 +25,6 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-  },
-  dense: {
-    marginTop: theme.spacing(2),
-  },
-  menu: {
-    width: 200,
-  },
-}));
-
 const Login = ({ errors, touched, status }) => {
   const [user, setUser] = useState([]);
 
@@ -53,7 +34,6 @@ const Login = ({ errors, touched, status }) => {
     }
   }, [status, user]);
 
-    const classes = useStyles();
 
   return (
 
