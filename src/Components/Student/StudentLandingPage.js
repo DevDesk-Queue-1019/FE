@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
-import CreateTicket from './CreateTicket';
-import MyTickets from '../Student/StudentTicketList';
+import CreateTicket from '../CreateTicket';
+import StudentTicketList from './StudentTicketList';
 import styled from 'styled-components';
 import TicketCard from "../Helper/TicketCard";
 // import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
-import { getTickets, filterTickets } from "../../actions";
+// import { getTickets, filterTickets } from "../../actions";
+import { getStudentTickets } from "../../actions";
 
 const Button = styled.button`
   width: 300px;
@@ -29,30 +30,41 @@ const Title = styled.h1`
 `;
 
 const StudentLandingPage = () => {
+    // const dispatch = useDispatch();
+    // const tickets = useSelector(state => state.tickets.tickets);
+    // console.log(tickets);
+
+    // useEffect(() => {
+    //     dispatch(getTickets());
+    // // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
     const dispatch = useDispatch();
-    const tickets = useSelector(state => state.tickets.tickets);
+    const tickets = useSelector(state => state.tickets.studentTickets);
+    console.log(tickets);
 
     useEffect(() => {
-        dispatch(getTickets());
+        dispatch(getStudentTickets());
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
     return(
         <div>
             <h1>Welcome Student!</h1>
             <Button>
                 <Link to='/createticket'>New Ticket</Link>                
             </Button>
-            <Button>
-                <Link to='/my_tickets'>My Tickets</Link>                
-            </Button>
+             {/* <Button>
+                 <Link to='/my_tickets'>My Tickets</Link>                
+             </Button> */}
             <PrivateRoute path='/createticket' component={CreateTicket} />
-            <PrivateRoute path='/my_tickets' component={MyTickets} />
+             {/* <PrivateRoute path='/my_tickets' component={StudentTicketList} /> */}
             {
                 tickets ? tickets.map( ticket => {
                     return <TicketCard key={ticket.id} id={ticket.id} title={ticket.title} description={ticket.description} tried={ticket.tried} type={ticket.type} />
                 }) : <h1>Loading...</h1>
             }
         </div>
+        // <StudentLandingPage />
     )
 
 }

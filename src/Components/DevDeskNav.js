@@ -15,7 +15,7 @@ import SignInPage from './SignInPage';
 import StudentLandingPage from './Student/StudentLandingPage';
 import HelperLandingPage from './Helper/HelperLandingPage';
 import PrivateRoute from './PrivateRoute';
-import CreateTicket from './Student/CreateTicket';
+import CreateTicket from './CreateTicket';
 
 
 // Styling

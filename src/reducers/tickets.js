@@ -7,10 +7,14 @@ import {
     ADD_TICKET_START,
     ADD_TICKET_SUCCESS,
     ADD_TICKET_ERR,
+    GET_STUDENT_TICKETS,
 } from "../actions";
 
 const initialState = {
     tickets: [],
+    loading: true,
+    err: null,
+    studentTickets: [],
 }
 
 export const tickets = (state = initialState, action) => {
@@ -32,8 +36,15 @@ export const tickets = (state = initialState, action) => {
                 loading: false,
                 err: action.payload
             }
-        case ADD_TICKET_START:
+        case GET_STUDENT_TICKETS:
             console.log(state);
+            return {
+                ...state,
+                loading: false,
+                studentTickets: [...action.payload],
+            }
+        case ADD_TICKET_START:
+            // console.log(state);
             return {
                 ...state,
                 loading: true,

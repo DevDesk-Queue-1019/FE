@@ -14,7 +14,7 @@ export const ADD_TICKET_ERR = "ADD_TICKET_ERR";
 export const getTickets = () => dispatch => {
   dispatch({ type: GET_TICKETS_START })
   axiosWithAuth()
-    .get("https://devdesk-backend.herokuapp.com/api/tickets/")
+    .get("https://devdesk-backend.herokuapp.com/api/tickets")
     .then(res => {
       dispatch({ type: GET_TICKETS_SUCCESS, payload: res.data })
     })
@@ -35,6 +35,20 @@ export const deleteTicket = id => dispatch => {
   })
   .catch( err => {
     console.log(err)
+  })
+}
+
+export const GET_STUDENT_TICKETS = 'GET_STUDENT_TICKETS';
+
+export const getStudentTickets = () => dispatch => {
+  const id = parseInt(localStorage.getItem('owner'));
+  axiosWithAuth().get(`https://devdesk-backend.herokuapp.com/api/tickets`)
+  .then( res => {
+    console.log(res.data)    
+    let studentTickets = res.data.filter( ticket => ticket.owner === id )
+    console.log('Inside GET_STUDENT_TICKETS action:', studentTickets);
+
+    dispatch({ type: GET_STUDENT_TICKETS, payload: studentTickets })
   })
 }
 
