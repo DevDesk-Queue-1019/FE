@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute';
-import CreateTicket from './CreateTicket';
-import MyTickets from '../Student/StudentTicketList';
+import CreateTicket from '../CreateTicket';
+import MyTickets from './StudentTicketList';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import { getStudentTickets } from "../../actions";
@@ -35,13 +35,13 @@ const StudentLandingPage = () => {
     }, [])
     return(
         <div>
-            <h1>Student Landing Page...</h1>
+            <h1>Welcome Student!</h1>
             <Button>
                 <Link to='/createticket'>New Ticket</Link>                
             </Button>
-            <Button>
-                <Link to='/my_tickets'>My Tickets</Link>                
-            </Button>
+             {/* <Button>
+                 <Link to='/my_tickets'>My Tickets</Link>                
+             </Button> */}
             <PrivateRoute path='/createticket' component={CreateTicket} />
             <PrivateRoute path='/my_tickets' component={MyTickets} />
             {
@@ -50,6 +50,7 @@ const StudentLandingPage = () => {
                 })
             }
         </div>
+        // <StudentLandingPage />
     )
 
 }

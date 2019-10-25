@@ -16,7 +16,7 @@ export const GET_STUDENT_TICKETS = "GET_STUDENT_TICKETS";
 export const getTickets = () => dispatch => {
   dispatch({ type: GET_TICKETS_START })
   axiosWithAuth()
-    .get("https://devdesk-backend.herokuapp.com/api/tickets/")
+    .get("https://devdesk-backend.herokuapp.com/api/tickets")
     .then(res => {
       console.log(res)
       dispatch({ type: GET_TICKETS_SUCCESS, payload: res.data })

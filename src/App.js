@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router } from 'react-router-dom';
-import DevDeskNav from './Components/DevDeskNav.js';
+import DevDeskNav from './Components/DevDeskNav';
 
 function App() {
   return (

@@ -14,6 +14,7 @@ const TicketCard = ({ title, description, tried, type, id, }) => {
             <button onClick={() => {
                 dispatch(deleteTicket(id))
             }}>Delete ticket</button>
+            <button>Assign</button>
         </div>
     )
 }
