@@ -13,18 +13,16 @@ code {
 }
 
 .form-container {
-  width: 50%;
+  width: 70%;
   /* height: 800px; */
   margin: auto;
-  background: #451526;
-  color: #f0f4f7;
+  /* background: #451526; */
+  color: #14121F;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
-
-
 
 .form-form {
   display: grid;
@@ -48,13 +46,26 @@ code {
 .form-field {
   border-radius: 20px;
   height: 30px;
-  width: 
+  padding-left: 20px;
 }
 
-/* .helpdesk-img {
+.hd-img {
+  background-image: url('./images/nathan-anderson-roZgc7SXXmI-unsplash.jpg');
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 100vh;
+  z-index: 1;
+}
+
+/* .hero-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
   width: 100%;
-  height: auto;
-  background-repeat: no-repeat;
-  background-position: right top;
-  background-attachment: fixed;
+  z-index: -5;
+  background-color: rgba(0,0,0,0.25);
 } */

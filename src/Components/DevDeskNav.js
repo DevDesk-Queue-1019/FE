@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
+
 import lambdaLogo from '../images/lambda-logo.png';
 import DevDeskHome from './DevDeskHome';
 import SignUpPage from './SignUpPage';
@@ -15,7 +16,7 @@ import SignInPage from './SignInPage';
 import StudentLandingPage from './Student/StudentLandingPage';
 import HelperLandingPage from './Helper/HelperLandingPage';
 import PrivateRoute from './PrivateRoute';
-import CreateTicket from './Student/CreateTicket';
+import CreateTicket from './CreateTicket';
 
 
 // Styling
@@ -67,7 +68,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // App
-export default function App() {
+export default function DevDeskNav() {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = useState(null);

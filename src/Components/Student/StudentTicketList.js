@@ -1,66 +1,50 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
+import React, { useEffect } from "react";
+import TicketCard from "../Helper/TicketCard";
+// import styled from 'styled-components';
+import { useDispatch, useSelector } from "react-redux";
+import { getStudentTickets } from "../../actions";
 
-const useStyles = makeStyles({
-    card: {
-      minWidth: 275,
-    },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  });
-  
+// const Button = styled.button`
+//   width: 300px;
+//   height: 40px;
+//   background-color: #BB1333;
+//   color: #fff;
+//   border-radius: 20px;
+//   margin-top: 40px;
+//   margin-bottom: 20px;
+//   font-size: 1.3rem;
+// `;
 
-export default function MyTickets() {
-    const [ticket, setTicket] = useState([]);
+// const Title = styled.h1`
+//   font-family: 'Raleway', sans-serif;
+//   font-weight: 600;
+//   color: #f0f4f7;
+//   font-size: 2.2em;
+//   text-align: center;
+// `;
+
+
+const StudentTicketList = () => {
+    const dispatch = useDispatch();
+    const tickets = useSelector(state => state.studentTickets);
+    // console.log(tickets);
 
     useEffect(() => {
-        axios
-            .get('https://devdesk-backend.herokuapp.com/api/tickets/', { headers: { Authorization: localStorage.token } })
-            .then(response => {
-                console.log(response.data);
-                setTicket(response.data);
-            })
-            .catch(err => {
-                console.error(err);
-            });
+        dispatch(getStudentTickets());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    return (
+    return(
         <div>
-            <h1>My Tickets</h1>
-            {ticket.map(ticket => (
-                <div className="card-container">
-                    <Card>
-                    <CardContent>
-                        <Typography>ID: {ticket.id}</Typography>
-                        <Typography>Type: {ticket.type}</Typography>
-                        <Typography>Description: {ticket.description}</Typography>
-                        <Typography>Owner ID:{ticket.owner}</Typography>
-                        <Typography>Assigned: {ticket.assigned}</Typography>
-                        <Typography>Date: {ticket.date}</Typography>
-                        <Typography>Resolved: {ticket.ressolved}</Typography>
-                        <Typography>Title: {ticket.title}</Typography>
-                        <Typography>Tried: {ticket.tried}</Typography>
-                    </CardContent>
-                    </Card>
-                </div>
-            ))
+            <h1>Welcome Helper</h1>
+            {
+                tickets ? tickets.map( ticket => {
+                    return <TicketCard key={ticket.id} id={ticket.id} title={ticket.title} description={ticket.description} tried={ticket.tried} type={ticket.type} />
+                }) : <h1>Loading...</h1>
             }
         </div>
     )
+
 }
+
+export default StudentTicketList;
