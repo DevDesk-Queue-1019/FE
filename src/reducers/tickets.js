@@ -14,7 +14,9 @@ const initialState = {
     tickets: [],
     loading: true,
     err: null,
-    studentTickets: [],
+    studentTickets: [{
+        status: false,
+    }],
 }
 
 export const tickets = (state = initialState, action) => {
