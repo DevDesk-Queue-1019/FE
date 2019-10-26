@@ -14,7 +14,9 @@ const initialState = {
     tickets: [],
     loading: true,
     err: null,
-    studentTickets: [],
+    studentTickets: [{
+        status: false,
+    }],
 }
 
 export const tickets = (state = initialState, action) => {
@@ -72,16 +74,18 @@ export const tickets = (state = initialState, action) => {
             }
         case DELETE_TICKET:
             let newTickets = state.tickets.filter( ticket => ticket.id !== action.payload )
+            let newStudentTickets = state.studentTickets.filter( ticket => ticket.id !== action.payload )
             console.log(state.tickets)
             return {
                 ...state,
-                tickets: [...newTickets]
+                tickets: [...newTickets],
+                studentTickets: [...newStudentTickets],
             }
-        case GET_STUDENT_TICKETS:
-            return {
-                ...state,
-                studentTickets: [...action.payload]
-            }
+        // case GET_STUDENT_TICKETS:
+        //     return {
+        //         ...state,
+        //         studentTickets: [...action.payload]
+        //     }
         default:
             return state;
     }
