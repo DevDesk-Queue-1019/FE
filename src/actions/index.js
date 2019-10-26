@@ -13,6 +13,21 @@ export const ADD_TICKET_ERR = "ADD_TICKET_ERR";
 
 export const GET_STUDENT_TICKETS = "GET_STUDENT_TICKETS";
 
+// export const GET_SINGLE_USER = "GET_SINGLE_USER";
+
+// export const getSingleUser = id => dispatch => {
+
+//   axiosWithAuth()
+//     .get(`https://devdesk-backend.herokuapp.com/api/users/${id}`, id)
+//     .then(res => {
+//       console.log(res.data);
+//       dispatch({ type: GET_SINGLE_USER, payload: res.data })
+//     })
+//     .catch(err => {
+//       console.log(err)
+//     })
+// }
+
 export const getTickets = () => dispatch => {
   dispatch({ type: GET_TICKETS_START })
   axiosWithAuth()
