@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import { addTicket } from '../actions';
 
 
-export const Button = styled.input`
+export const Button = styled.button`
   width: 300px;
   height: 40px;
   background-color: #BB1333;
@@ -22,40 +22,11 @@ export const Button = styled.input`
 export const Title = styled.h1`
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  color: #14121F;
-  text-align: center;
+  color: #f0f4f7;
   font-size: 2.2em;
   
 `;
-const FormContainer = styled.div`
-width: 70%;
 
-margin: auto;
-
-color: #14121F;
-display: flex;
-flex-direction: column;
-border-radius: 20px;
-
-`;
-const StyledForm = styled.form`
-display: grid;
-width: 100%;
-justify-content: center;
-font-size: 1.3rem;
-`;
-const StyledInput = styled.input`
-border-radius: 20px;
-height: 30px;
-padding-left: 20px;
-margin-bottom: 8%;
-`;
-const StyledTextarea = styled.textarea`
-border-radius: 20px;
-height: 30px;
-padding-left: 20px;
-margin-bottom: 8%
-`;
 
 const CreateTicket = props => {
 
@@ -78,17 +49,14 @@ const CreateTicket = props => {
   }
 
   return (
-    <FormContainer>
-      <Title>Create A New Ticket</Title>
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledInput name="title" placeholder="title" ref={register} />
-        <StyledInput name="type" placeholder="type" ref={register} />
-        <StyledTextarea name="description" placeholder="description" ref={register} />
-        <StyledTextarea name="tried" placeholder="tried" ref={register} />
-        <Button type="submit" value="Submit" />
-      </StyledForm>      
-    </FormContainer>
 
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input name="title" placeholder="title" ref={register} />
+      <input name="description" placeholder="description" ref={register} />
+      <input name="type" placeholder="type" ref={register} />
+      <input name="tried" placeholder="tried" ref={register} />
+      <input type="submit" value="Submit" />
+    </form>
   )
 }
 
