@@ -98,7 +98,7 @@ const CreateTicket = props => {
           <input name="title" placeholder="Title" className={classes.textField} ref={register} />
           <label className='form-label'>What broke?</label>
           <input name="description" placeholder="describe your issue" className={classes.textField} ref={register} />
-          <label className='form-label'>Ticket Type:</label>
+          <label className='form-label'>Type:</label>
           <input name="type" placeholder="non-urgent or urgent" className={classes.textField} ref={register} />
           <label className='form-label'>What have you tried to fix the problem?</label>
           <input name="tried" placeholder="I tried..." className={classes.textField} ref={register} />
