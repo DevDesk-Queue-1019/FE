@@ -38,7 +38,7 @@ const HelperLandingPage = () => {
   }, []);
 
   return (
-    <div>
+    <div className="hd-img2">
       <div className="Menu">
         <h1>{localStorage.getItem("welcome")}</h1>
         <FormControl className={classes.formControl}>

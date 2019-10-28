@@ -5,8 +5,10 @@
 
 .Menu {
   margin: 0 auto;
-  width: 80%;
+  width: 60%;
   background-color: white;
+  opacity: 0.8;
+  height: 93vh;
 }
 
 .DeleteButton {
@@ -25,10 +27,12 @@
 .TicketCard {
   width: 70%;
   margin: 0 auto;
+  
+  opacity: 1.0;
 }
 
 .ticketForm {
-  width: auto;
+  width: 60%;
   font-size: 2rem;
   display: flex;
   flex-wrap: wrap;

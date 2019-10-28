@@ -45,7 +45,7 @@ const CreateTicket = props => {
       owner: ownerId
     }
     dispatch(addTicket(input));
-    // props.history.push('/student');
+    props.history.push('/student');
   }
 
   return (

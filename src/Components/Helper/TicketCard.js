@@ -35,7 +35,7 @@ const TicketCard = ({ title, description, tried, type, id }) => {
 
   return (
     <div className="TicketCard">
-      <ExpansionPanel style={{ margin: "1rem" }}>
+      <ExpansionPanel style={{ margin: "1rem", backgroundColor: "CornflowerBlue" }}>
         <ExpansionPanelSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
