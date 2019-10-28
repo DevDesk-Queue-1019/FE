@@ -49,14 +49,19 @@ const CreateTicket = props => {
   }
 
   return (
-
+    <div>
+    <h1>Create Ticket</h1>
+    <div className="ticketForm">
     <form onSubmit={handleSubmit(onSubmit)}>
       <input name="title" placeholder="title" ref={register} />
-      <input name="description" placeholder="description" ref={register} />
       <input name="type" placeholder="type" ref={register} />
-      <input name="tried" placeholder="tried" ref={register} />
+      <textarea name="description" placeholder="description" ref={register} />
+      <textarea name="tried" placeholder="tried" ref={register} />
+      <br></br>
       <input type="submit" value="Submit" />
     </form>
+    </div>
+    </div>
   )
 }
 
