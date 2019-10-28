@@ -56,9 +56,16 @@ const StudentLandingPage = () => {
     console.log(studentTicketCount);
 
     useEffect(() => {
+<<<<<<< HEAD
         // const id = parseInt(localStorage.getItem('owner'));
         dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
     }, [dispatch]);
+=======
+    
+        dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
+       
+   }, [dispatch])
+>>>>>>> 8f7f76734867090238c66832e0012af5069a65a5
     return(
         <div>
             {/* Search Bar (not functional) */}

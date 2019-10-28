@@ -41,6 +41,7 @@ code {
 
 .form-label {
   padding-top: 20px;
+  font: 1.5rem;
 }
 
 .form-field {
@@ -69,3 +70,14 @@ code {
   z-index: -5;
   background-color: rgba(0,0,0,0.25);
 } */
+
+.hd-img2 {
+  background-image: url('./images/nathan-anderson-roZgc7SXXmI-unsplash.jpg');
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  top: 0;
+  bottom: 0;
+  height: 93vh;
+  z-index: 5;
+}

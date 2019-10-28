@@ -63,7 +63,7 @@ return (
 }
 
 const formikSignUp = withFormik({
-mapPropsToValues({ username, password, authType, }) {
+mapPropsToValues({ username, password, authType}) {
   return {
     username: username || "",
     password: password || "",
@@ -75,12 +75,14 @@ validationSchema: Yup.object().shape({
   password: Yup.string().required('***Please enter desired password***'),
   authType: Yup.string().required('***user, helper, or admin?***')
 }),
-handleSubmit(values, { setStatus, resetForm }) {
+handleSubmit(values, { setStatus, resetForm, props }) {
   axios.post("https://devdesk-backend.herokuapp.com/api/auth/register", values)
     .then(result => {
       console.log(result);
       setStatus(result.data);
       resetForm();
+
+      props.history.push('/login');
     })
     .catch(error => console.error(error));
 }
