@@ -56,12 +56,9 @@ const StudentLandingPage = () => {
     console.log(studentTicketCount);
 
     useEffect(() => {
-        const id = parseInt(localStorage.getItem('owner'));
+    
         dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
-        axios
-            .get(`https://devdesk-backend.herokuapp.com/api/users/${id}`)
-            .then(res => console.log(res.data))
-            .catch(err => console.log(err))
+       
    }, [dispatch])
     return(
         <div>
