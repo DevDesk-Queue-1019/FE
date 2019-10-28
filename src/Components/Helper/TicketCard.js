@@ -2,7 +2,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteTicket } from "../../actions";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "../../App.css";

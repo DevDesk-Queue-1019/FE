@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import TicketCard from "./TicketCard";
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { useDispatch, useSelector } from "react-redux";
 import { getTickets } from "../../actions";
 import "../../App.css";
