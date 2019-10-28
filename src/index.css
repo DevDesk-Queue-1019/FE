@@ -75,7 +75,7 @@ code {
   background-size: cover;
   background-position: center center;
   position: relative;
-  margin-top: -20px;
+  top: 0;
   bottom: 0;
   height: 93vh;
   z-index: 5;
