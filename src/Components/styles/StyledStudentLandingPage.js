@@ -40,12 +40,11 @@ export const SearchInput = styled.input`
 export const TicketHeaderContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin-left: 10%;
     margin-top: 35px;
 `;
 
 export const TicketHeader = styled.h1`
-  font-size: 4rem;
+  font-size: 3.4rem;
   margin: 0%;
 `;
 

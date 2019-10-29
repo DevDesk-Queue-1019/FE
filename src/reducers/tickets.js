@@ -8,9 +8,11 @@ import {
     ADD_TICKET_SUCCESS,
     ADD_TICKET_ERR,
     GET_STUDENT_TICKETS,
+    GET_SINGLE_USER,
 } from "../actions";
 
 const initialState = {
+    user: {},
     tickets: [],
     loading: true,
     err: null,
@@ -21,6 +23,11 @@ const initialState = {
 
 export const tickets = (state = initialState, action) => {
     switch(action.type){
+        case GET_SINGLE_USER:
+            return{
+                ...state,
+                user: action.payload,
+            }
         case GET_TICKETS_START:
             return {
                 ...state,

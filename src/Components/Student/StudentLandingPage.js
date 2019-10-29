@@ -5,7 +5,7 @@ import PrivateRoute from '../PrivateRoute';
 import CreateTicket from '../CreateTicket';
 import MyTickets from './StudentTicketList';
 import { useDispatch, useSelector } from "react-redux";
-import { getStudentTickets, deleteTicket } from "../../actions";
+import { getStudentTickets, deleteTicket, getSingleUser } from "../../actions";
 
 // Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,7 +21,7 @@ import {
 
 const useStyles = makeStyles({
     card: {
-      width: '50%',
+        width: '50%',
       margin: '5%',
 
     },
@@ -37,11 +37,11 @@ const useStyles = makeStyles({
       marginBottom: 12,
     },
     description: {
-        width: '50%',
+        // width: '50%',
         marginBottom: '3%', 
     },
     descriptionSpan: {
-        marginLeft: '10%',
+        // marginLeft: '10%',
     },
   });
 
@@ -54,18 +54,13 @@ const StudentLandingPage = () => {
     // console.log(studentTickets);
     const studentTicketCount = studentTickets.length;
     console.log(studentTicketCount);
+    const user = useSelector(state => state.tickets.user)
 
     useEffect(() => {
-<<<<<<< HEAD
         // const id = parseInt(localStorage.getItem('owner'));
         dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
+        dispatch(getSingleUser(parseInt(localStorage.getItem("owner"))))
     }, [dispatch]);
-=======
-    
-        dispatch(getStudentTickets(parseInt(localStorage.getItem("owner"))))
-       
-   }, [dispatch])
->>>>>>> 8f7f76734867090238c66832e0012af5069a65a5
     return(
         <div>
             {/* Search Bar (not functional) */}
@@ -75,7 +70,7 @@ const StudentLandingPage = () => {
             </SearchContainer>
             {/* Header */}
             <TicketHeaderContainer>
-                <TicketHeader>My Tickets</TicketHeader>
+                <TicketHeader>{user.username}'sTickets</TicketHeader>
                 <TicketCount>({studentTicketCount} Tickets)</TicketCount>                
             </TicketHeaderContainer>
             {/* Header Buttons */}
@@ -101,17 +96,17 @@ const StudentLandingPage = () => {
                             <Card className={classes.card}>
                                 <CardContent>
                                 <Typography variant="h5" component="h2">
-                                    {ticket.title}    
+                                    <strong>{ticket.title}</strong>    
                                 </Typography>
                                 <Typography className={classes.pos} color="textSecondary">
                                     {ticket.type}
                                 </Typography>
                                 <Typography className={classes.description} variant="body2" component="p">
-                                    Description:<br />
+                                    <strong>Description:</strong><br />
                                         <span className={classes.descriptionSpan}>{ticket.description}</span>
                                 </Typography>
                                 <Typography variant="body2" component="p">
-                                    Tried:<br />
+                                    <strong>Tried:</strong><br />
                                         <span className={classes.descriptionSpan}>{ticket.tried}</span>
                                 </Typography>  
                                </CardContent>

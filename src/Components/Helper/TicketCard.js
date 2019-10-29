@@ -1,6 +1,6 @@
 /* eslint-disable no-restricted-globals */
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteTicket } from "../../actions";
 // import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,6 +32,15 @@ const useStyles = makeStyles(theme => ({
 const TicketCard = ({ title, description, tried, type, id }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [assigned, setAssigned] = useState('Assign');
+
+  const assign = () => {
+    if(assigned === 'Assign'){
+      setAssigned('Re-Assign')
+    }else if(assigned === 'Re-Assign'){
+      setAssigned('Assign')
+    }
+  }
 
   return (
     <div className="TicketCard">
@@ -63,6 +72,7 @@ const TicketCard = ({ title, description, tried, type, id }) => {
           >
             Delete ticket
           </FontAwesomeIcon>
+          <input type='button' onClick={assign} value={assigned} />
         </ExpansionPanelActions>
       </ExpansionPanel>
     </div>
