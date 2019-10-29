@@ -19,7 +19,20 @@
   text-align: end;
 }
 
+.EditButton {
+  color: #8013c9;
+  font-size: 2rem;
+  transition-duration: 0.3s;
+  text-align: end;
+}
+
 .DeleteButton:hover {
+  cursor: pointer;
+  color: black;
+  justify-self: flex-start;
+}
+
+.EditButton:hover {
   cursor: pointer;
   color: black;
   justify-self: flex-start;

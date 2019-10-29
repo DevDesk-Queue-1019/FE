@@ -63,6 +63,7 @@ const HelperLandingPage = () => {
                 description={ticket.description}
                 tried={ticket.tried}
                 type={ticket.type}
+                ticket={ticket}
               />
             );
           })

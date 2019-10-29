@@ -8,6 +8,7 @@ import {
     ADD_TICKET_SUCCESS,
     ADD_TICKET_ERR,
     GET_STUDENT_TICKETS,
+    UPDATE_TICKET
 } from "../actions";
 
 const initialState = {
@@ -27,6 +28,7 @@ export const tickets = (state = initialState, action) => {
                 loading: true
             }
         case GET_TICKETS_SUCCESS:
+            console.log(action.payload)
             return {
                 ...state,
                 tickets: [...action.payload],
@@ -81,11 +83,18 @@ export const tickets = (state = initialState, action) => {
                 tickets: [...newTickets],
                 studentTickets: [...newStudentTickets],
             }
-        // case GET_STUDENT_TICKETS:
-        //     return {
-        //         ...state,
-        //         studentTickets: [...action.payload]
-        //     }
+        case UPDATE_TICKET:
+            let updatedTickets = state.tickets.map( ticket => {
+                if(ticket.id === action.payload.id){
+                    return action.payload;
+                } else {
+                    return ticket;
+                }
+            })
+            return {
+                ...state,
+                tickets: [...updatedTickets]
+            };
         default:
             return state;
     }

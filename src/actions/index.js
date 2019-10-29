@@ -13,6 +13,8 @@ export const ADD_TICKET_ERR = "ADD_TICKET_ERR";
 
 export const GET_STUDENT_TICKETS = "GET_STUDENT_TICKETS";
 
+export const UPDATE_TICKET = "UPDATE_TICKET";
+
 // export const GET_SINGLE_USER = "GET_SINGLE_USER";
 
 // export const getSingleUser = id => dispatch => {
@@ -74,5 +76,16 @@ export const getStudentTickets = id => dispatch => {
   .then( res => {
     let studentTickets = res.data.filter( ticket => ticket.owner === id )
     dispatch({ type: GET_STUDENT_TICKETS, payload: studentTickets })
+  })
+}
+
+export const updateTicket = (id, ticket) => dispatch => {
+  axiosWithAuth().put(`https://devdesk-backend.herokuapp.com/api/tickets/${id}`, ticket)
+  .then( res => {
+    console.log(res);
+    dispatch({ type: UPDATE_TICKET, payload: res.data });
+  })
+  .catch( err => {
+    console.log( err );
   })
 }
